@@ -42,14 +42,14 @@
                             <div class="flex flex-col gap-y-[22px] mb-[26px]">
                                 <div class="flex flex-col gap-y-[3px] text-[12px]">
                                     <label for="NamaPerlombaan">Nama Perlombaan</label>
-                                    <input class="bg-[#F9F9F9] px-[5px] placeholder:italic placeholder:font-light w-[470px] h-[30px] rounded-[3px] border-[0.3px] border-black focus:outline-[0.3px] focus:outline-blue-600" name="NamaPerlombaan" placeholder="Masukan Nama Perlombaan..." type="text">
+                                    <input class="bg-[#F9F9F9] px-[5px] placeholder:italic placeholder:font-light w-[470px] h-[30px] rounded-[3px] border-[0.3px] border-black focus:outline-[0.3px] focus:outline-blue-600" name="NamaPerlombaan" placeholder="Masukan Nama Perlombaan..." type="text" value="{{ old('NamaPerlombaan') }}">
                                     @error ('NamaPerlombaan')
                                     <p class="mt-2 text-[13px] text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span>{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div class="flex flex-col gap-y-[3px] text-[12px]">
                                     <label for="UrutanPrestasi">Urutan Kejuaraan Prestasi</label>
-                                    <input class="bg-[#F9F9F9] px-[5px] placeholder:italic placeholder:font-light w-[280px] h-[30px] rounded-[3px] border-[0.3px] border-black focus:outline-[0.3px] focus:outline-blue-600" name="UrutanPrestasi" placeholder="Masukan Urutan Kejuaraan..." type="text">
+                                    <input class="bg-[#F9F9F9] px-[5px] placeholder:italic placeholder:font-light w-[280px] h-[30px] rounded-[3px] border-[0.3px] border-black focus:outline-[0.3px] focus:outline-blue-600" name="UrutanPrestasi" placeholder="Masukan Urutan Kejuaraan..." type="text" value="{{ old('UrutanPrestasi') }}">
                                     @error ('UrutanPrestasi')
                                     <p class="mt-2 text-[13px] text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span>{{ $message }}</p>
                                     @enderror
@@ -59,7 +59,7 @@
                             <div class="flex flex-col gap-y-[22px]">
                                 <div class="flex flex-col gap-y-[3px] text-[12px]">
                                     <label for="TanggalPerlombaan">Tanggal Perlombaan</label>
-                                    <input class="bg-[#F9F9F9] px-[10px] w-[280px] h-[30px] rounded-[3px] border-[0.3px] border-black focus:outline-[0.3px] focus:outline-blue-600" name="TanggalPerlombaan" type="date">
+                                    <input class="bg-[#F9F9F9] px-[10px] w-[280px] h-[30px] rounded-[3px] border-[0.3px] border-black focus:outline-[0.3px] focus:outline-blue-600" name="TanggalPerlombaan" type="date" value="{{ old('TanggalPerlombaan') }}">
                                     @error ('TanggalPerlombaan')
                                     <p class="mt-2 text-[13px] text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span>{{ $message }}</p>
                                     @enderror

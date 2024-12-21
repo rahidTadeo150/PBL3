@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Beasiswa;
 use App\Models\Lomba;
+use App\Models\RequestPrestasi;
 use Illuminate\Http\Request;
 
 class AdminPanel extends Controller
@@ -55,7 +56,10 @@ class AdminPanel extends Controller
         return view('admin.detailEvent');
     }
     public function directToIndexNotification (Request $request) {
-        return view('admin.notification.indexNotification');
+        $RequestUnread = RequestPrestasi::with('Mahasiswa')->orderBy('created_at', 'desc')->get();
+        return view('admin.notification.indexNotification', [
+            'RequestUnread' => $RequestUnread,
+        ]);
     }
     public function directToDetailNotification (Request $request) {
         return view('admin.notification.DetailNotification');
