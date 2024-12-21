@@ -32,6 +32,10 @@ Route::middleware('MahasiswaLogedIn')->group(function () {
 });
 
 Route::middleware('AdminLogedIn')->group(function () {
+    Route::get('/test-dashboard-admin', function () {
+        return view('admin.test');
+    });
+
     Route::post('/logout-account', [AuthorizationAdmin::class, 'logout'])->name('AdminLogin.Logout');
 
     Route::get('/dashboard-admin', [AdminPanel::class, 'directToDashboard'])->name('Dashboard.Index');
@@ -49,11 +53,11 @@ Route::middleware('AdminLogedIn')->group(function () {
     Route::get('/restoring-data-beasiswa', [Beasiswa::class, 'RestoreBeasiswa'])->name('Beasiswa.Restore');
 
     Route::get('/select-instansi', [Instansi::class, 'SelectionInstansiBeasiswa'])->name('Instansi.Selection');
-    Route::get('/index-instansi', [ Instansi::class, 'directToIndex'])->name('Instansi.Index');
-    Route::get('/form-instansi', [ Instansi::class, 'directToCreateInstansiBeasiswa'])->name('Instansi.Create');
-    Route::post('/store-data-instansi', [ Instansi::class, 'StoreDataInstansi'])->name('Instansi.Store');
-    Route::get('/edit-instansi', [ Instansi::class, 'EditInstansi'])->name('Instansi.Edit');
-    Route::delete('/delete-instansi', [ Instansi::class, 'DeleteInstansi'])->name('Instansi.Delete');
+    Route::get('/index-instansi', [Instansi::class, 'directToIndex'])->name('Instansi.Index');
+    Route::get('/form-instansi', [Instansi::class, 'directToCreateInstansiBeasiswa'])->name('Instansi.Create');
+    Route::post('/store-data-instansi', [Instansi::class, 'StoreDataInstansi'])->name('Instansi.Store');
+    Route::get('/edit-instansi', [Instansi::class, 'EditInstansi'])->name('Instansi.Edit');
+    Route::delete('/delete-instansi', [Instansi::class, 'DeleteInstansi'])->name('Instansi.Delete');
 
     Route::get('/index-lomba', [Lomba::class, 'directToIndexLomba'])->name('Lomba.Index');
     Route::get('/index-history-lomba', [Lomba::class, 'directToIndexHistoryLomba'])->name('Lomba.HistoryData');
