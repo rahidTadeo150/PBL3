@@ -16,7 +16,8 @@ use Illuminate\Http\Request;
 
 class WebsitePanel extends Controller
 {
-    public function ShowListBeasiswa(Request $request) {
+    public function ShowListBeasiswa(Request $request)
+    {
         $Relation = ['Instansi'];
         $Highlight = Beasiswa::latest()->take(5)->get();
 
@@ -30,7 +31,7 @@ class WebsitePanel extends Controller
 
         $BestInstansi = Instansi::withCount('Beasiswa')->orderBy('beasiswa_count', 'desc')->take(5)->get();
         if ($request->Filter == 'Nama Beasiswa') {
-            $Beasiswa = Beasiswa::where('nama_beasiswa', 'like', '%'.$request->search.'%')->get();
+            $Beasiswa = Beasiswa::where('nama_beasiswa', 'like', '%' . $request->search . '%')->get();
         } else if ($request->Filter == 'Instansi Beasiswa') {
             $Beasiswa = Beasiswa::whereHas('instansi', function ($query) use ($request) {
                 $query->where('nama_instansi', 'like', '%' . $request->search . '%');
@@ -44,6 +45,10 @@ class WebsitePanel extends Controller
 
         $Highlight->load($Relation);
         $Beasiswa->load($Relation);
+        // Ubah format foto_beasiswa untuk setiap item dalam koleksi
+        foreach ($Beasiswa as $data) {
+            $data->foto_beasiswa = str_replace('\\', '/', $data->foto_beasiswa);
+        }
 
         return view('Website.Beasiswa.IndexData', [
             'RoutingAt' => 'Beasiswa',
@@ -53,7 +58,8 @@ class WebsitePanel extends Controller
         ]);
     }
 
-    public function DetailBeasiswa(Request $request) {
+    public function DetailBeasiswa(Request $request)
+    {
         $Relation = ['Instansi', 'Tingkatan'];
         $Beasiswa = Beasiswa::with($Relation)->find($request->id);
         $Beasiswa->load($Relation);
@@ -63,7 +69,8 @@ class WebsitePanel extends Controller
         ]);
     }
 
-    public function ShowListLomba(Request $request) {
+    public function ShowListLomba(Request $request)
+    {
         $Relation = ['Instansi'];
         $Highlight = Lomba::latest()->take(5)->get();
 
@@ -77,7 +84,7 @@ class WebsitePanel extends Controller
 
         $BestInstansi = Instansi::withCount('Lomba')->orderBy('lomba_count', 'desc')->take(5)->get();
         if ($request->Filter == 'Nama Perlombaan') {
-            $Lomba = Lomba::where('nama_perlombaan', 'like', '%'.$request->search.'%')->get();
+            $Lomba = Lomba::where('nama_perlombaan', 'like', '%' . $request->search . '%')->get();
         } else if ($request->Filter == 'Instansi Lomba') {
             $Lomba = Lomba::whereHas('Instansi', function ($query) use ($request) {
                 $query->where('nama_instansi', 'like', '%' . $request->search . '%');
@@ -92,6 +99,11 @@ class WebsitePanel extends Controller
         $Highlight->load($Relation);
         $Lomba->load($Relation);
 
+        // Ubah format foto_beasiswa untuk setiap item dalam koleksi
+        foreach ($Lomba as $data) {
+            $data->foto_lomba = str_replace('\\', '/', $data->foto_lomba);
+        }
+
         return view('Website.Lomba.IndexData', [
             'RoutingAt' => 'Lomba',
             'Highlight' => $Highlight,
@@ -100,7 +112,8 @@ class WebsitePanel extends Controller
         ]);
     }
 
-    public function DetailLomba(Request $request) {
+    public function DetailLomba(Request $request)
+    {
         $Relation = ['Instansi', 'Tingkatan'];
         $Lomba = Lomba::with($Relation)->find($request->id);
         $Lomba->load($Relation);
@@ -110,7 +123,8 @@ class WebsitePanel extends Controller
         ]);
     }
 
-    public function ShowListPrestasi(Request $request) {
+    public function ShowListPrestasi(Request $request)
+    {
         $DataPrestasi = MahasiswaPrestasi::with('Prestasi', 'Mahasiswa')->orderBy('created_at', 'desc')->get();
 
         $BestMahasiswa = Mahasiswa::withCount('MahasiswaPrestasi')->orderBy('mahasiswa_prestasi_count', 'desc')->take(5)->get();
@@ -139,7 +153,8 @@ class WebsitePanel extends Controller
         ]);
     }
 
-    public function RequestPrestasi(Request $request) {
+    public function RequestPrestasi(Request $request)
+    {
         $Category = CategoryPrestasi::all();
         $Tingkatan = Tingkatan::all();
         return view('Website.Pengajuan.PengajuanPrestasi', [
@@ -148,7 +163,8 @@ class WebsitePanel extends Controller
         ]);
     }
 
-    public function SendingRequestPrestasi(Request $request) {
+    public function SendingRequestPrestasi(Request $request)
+    {
         $ValidateData = $request->validate([
             'IdMahasiswa' => ['required'],
             'NamaPerlombaan' => ['required', 'max:200', 'min:4'],
@@ -156,11 +172,11 @@ class WebsitePanel extends Controller
             'TanggalPerlombaan' => ['required'],
             'Tingkatan' => ['required'],
             'CategoryPerlombaan' => ['required'],
-            'FotoPrestasi' => ['required', 'image', 'mimes:jpeg,jpg,png','file', 'max:5120'],
+            'FotoPrestasi' => ['required', 'image', 'mimes:jpeg,jpg,png', 'file', 'max:5120'],
         ]);
 
         $ValidateData['Administrator'] = auth('Admin')->user()->id;
-        $ValidateData['FotoPrestasi']=$request->file('FotoPrestasi')->store('/RequestPrestasi');
+        $ValidateData['FotoPrestasi'] = $request->file('FotoPrestasi')->store('/RequestPrestasi');
 
         $CreatePrestasi = RequestPrestasi::create([
             'id_mahasiswa' => $ValidateData['IdMahasiswa'],
