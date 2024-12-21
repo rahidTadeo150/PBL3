@@ -1,5 +1,5 @@
 <div id="sidebar"
-    class="fixed inset-y-0 left-0 mt-16 transition-transform duration-300 ease-in-out transform -translate-x-full md:static w-fit bg-3A3838 md:translate-x-0">
+    class="fixed inset-y-0 left-0 px-4 mt-16 transition-transform duration-300 ease-in-out transform -translate-x-full md:static w-fit bg-3A3838 md:translate-x-0">
     <div class="flex flex-col items-center pb-20 pt-11">
         <div class="flex flex-col mb-10 gap-y-2">
             <a href="/dashboard-admin">

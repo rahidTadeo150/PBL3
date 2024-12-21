@@ -14,8 +14,9 @@
                 <img src="\webdevelp\robots.png" class="w-full h-auto">
             </div>
         </div>
-        <div class=" h-[243px] bg-white rounded-lg shadow-xl">
-            <p>test</p>
+        <div class=" h-[243px] bg-white flex justify-center items-center flex-col rounded-lg shadow-xl">
+            <p class="text-base font-bold">Jam Digital</p>
+            <div id="digital-clock" class="mt-2 font-mono text-5xl"></div>
         </div>
     </div>
     <div class="flex flex-row items-center justify-between mt-12 ">
@@ -117,4 +118,19 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0'); // Menambahkan 0 di depan jika kurang dari 10
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('digital-clock').textContent = timeString;
+        }
+
+        setInterval(updateClock, 1000); // Memperbarui jam setiap detik
+        updateClock(); // Memanggil fungsi untuk pertama kali agar jam ditampilkan segera
+    </script>
 @endsection
