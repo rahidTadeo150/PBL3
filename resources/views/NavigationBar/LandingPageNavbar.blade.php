@@ -1,6 +1,6 @@
 <nav class="flex items-center justify-between py-4">
     <a href="{{ route('Website.LandingPage') }}">
-        <img src="\webdevelp\logolobi\Logo-Lobi-White-Longtext.png" alt="Logo Lobi Poliwangi" class="h-10">
+        <img src="\webdevelp\logolobi\Logo-Lobi-White-Longtext.png" alt="Logo Lobi Poliwangi" class="h-[60px]">
     </a>
 
     <!-- Hamburger Menu -->
@@ -14,7 +14,7 @@
     </div>
 
     <!-- Menu Items -->
-    <div class="hidden space-x-4 lg:flex lg:justify-center lg:items-center" id="menu">
+    <div class="hidden space-x-4 lg:flex lg:justify-center lg:items-center gap-x-[30px] text-[14px] font-medium" id="menu">
         <a href="{{ route('Website.Beasiswa.Index') }}" class="text-white">Beasiswa</a>
         <a href="{{ route('Website.Lomba.Index') }}" class="text-white">Lomba</a>
         <a href="{{ route('Website.Prestasi.Index') }}" class="text-white">Prestasi</a>
@@ -34,7 +34,7 @@
             </div>
         @else
             <a href="{{ route('Login.LoginMethod') }}"
-                class="px-4 py-2 text-white border-2 rounded border-grey-200 hover:bg-white hover:text-white">Log
+                class="px-[30px] py-2 transition-all duration-300 ease-in-out border rounded text-white border-white hover:bg-white hover:border-white hover:text-blue-800 ">Log
                 In</a>
         @endif
     </div>

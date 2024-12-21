@@ -10,7 +10,7 @@
 </head>
 <body class="font-Poppins bg-[#ffffff]">
     @include('NavigationBar.WebsiteNavbar')
-    <div class="pt-16 ">
+    <div class="">
         @yield('Content')
     </div>
     <script>

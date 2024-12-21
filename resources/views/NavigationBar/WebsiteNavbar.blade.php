@@ -51,7 +51,7 @@
 <script src="\JavascriptDevelp\AccountDropdown.js"></script> --}}
 
 
-<nav class="flex items-center justify-between py-4">
+<nav class="flex items-center justify-between py-4 px-[20px]">
     <a href="{{ route('Website.LandingPage') }}">
         <img src="\webdevelp\logolobi\Logo-Lobi-01.png" alt="Logo Lobi Poliwangi" class="h-10">
     </a>
@@ -67,7 +67,7 @@
     </div>
 
     <!-- Menu Items -->
-    <div class="hidden space-x-4 lg:flex lg:justify-center lg:items-center" id="menu">
+    <div class="hidden space-x-4 lg:flex lg:justify-center lg:items-center gap-x-[30px] text-[14px] font-medium" id="menu">
         <a href="{{ route('Website.Beasiswa.Index') }}" class="text-slate-800">Beasiswa</a>
         <a href="{{ route('Website.Lomba.Index') }}" class="text-slate-800">Lomba</a>
         <a href="{{ route('Website.Prestasi.Index') }}" class="text-slate-800">Prestasi</a>
@@ -87,7 +87,7 @@
             </div>
         @else
             <a href="{{ route('Login.LoginMethod') }}"
-                class="px-4 py-2 transition-all duration-300 ease-in-out border-2 rounded text-slate-800 border-grey-200 hover:bg-slate-800 hover:text-white ">Log
+                class="px-[30px] py-2 transition-all duration-300 ease-in-out border rounded text-blue-800 border-blue-800 hover:bg-blue-800 hover:border-blue-800 hover:text-white ">Log
                 In</a>
         @endif
     </div>
