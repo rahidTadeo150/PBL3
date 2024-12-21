@@ -26,10 +26,10 @@
                 </div>
 
                 <div id="AccountDropdown"
-                    class="absolute right-0 hidden w-48 mt-2 bg-white border border-white shadow-lg bg-grey-200">
-                    <a href="{{ route('Login.Logout') }}" class="block px-4 py-2 hover:bg-grey-200">Ajukan
+                    class="absolute right-0 hidden w-48 mt-2 p-[5px] rounded-[3px] bg-white border text-[12px] font-normal border-white shadow-lg bg-grey-200">
+                    <a href="{{ route('Account.RequestPrestasi') }}" class="hover:bg-slate-200 block px-4 py-2 hover:bg-grey-200">Ajukan
                         Prestasi</a>
-                    <a href="{{ route('Login.Logout') }}" class="block px-4 py-2 hover:bg-grey-200">Log Out</a>
+                    <a href="{{ route('Login.Logout') }}" class="hover:bg-slate-200 block px-4 py-2 hover:bg-grey-200">Log Out</a>
                 </div>
             </div>
         @else

@@ -20,6 +20,10 @@ class Mahasiswa extends Authenticatable
         return $this->hasMany(MahasiswaPrestasi::class, 'mahasiswa_id', 'id');
     }
 
+    public function MahasiswaRequest() {
+        return $this->hasMany(RequestPrestasi::class, 'mahasiswa_id', 'id');
+    }
+
     public function Prodi() {
         return $this->belongsTo(Prodi::class, 'prodi_id','id');
     }

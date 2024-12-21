@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('request_prestasi', function (Blueprint $table) {
             $table->id();
-            $table->String('id_mahasiswa');
+            $table->foreignId('mahasiswa_id');
             $table->String('nama_perlombaan');
             $table->date('tanggal_perlombaan');
             $table->String('foto_bukti_prestasi');

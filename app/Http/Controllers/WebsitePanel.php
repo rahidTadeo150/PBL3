@@ -175,11 +175,10 @@ class WebsitePanel extends Controller
             'FotoPrestasi' => ['required', 'image', 'mimes:jpeg,jpg,png', 'file', 'max:5120'],
         ]);
 
-        $ValidateData['Administrator'] = auth('Admin')->user()->id;
         $ValidateData['FotoPrestasi'] = $request->file('FotoPrestasi')->store('/RequestPrestasi');
 
         $CreatePrestasi = RequestPrestasi::create([
-            'id_mahasiswa' => $ValidateData['IdMahasiswa'],
+            'mahasiswa_id' => $ValidateData['IdMahasiswa'],
             'nama_perlombaan' => ucwords(strtolower($ValidateData['NamaPerlombaan'])),
             'tanggal_perlombaan' => $ValidateData['TanggalPerlombaan'],
             'tingkatan_id' => $ValidateData['Tingkatan'],
