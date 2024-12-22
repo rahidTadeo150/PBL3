@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Beasiswa;
 use App\Models\Lomba;
+use App\Models\MahasiswaPrestasi;
+use App\Models\Prestasi;
 use App\Models\RequestPrestasi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminPanel extends Controller
 {
@@ -61,7 +64,48 @@ class AdminPanel extends Controller
             'RequestUnread' => $RequestUnread,
         ]);
     }
+
     public function directToDetailNotification (Request $request) {
-        return view('admin.notification.DetailNotification');
+        $DataRequest = RequestPrestasi::with('Mahasiswa')->find($request->IdRequest, 'id')->first();
+        return view('admin.notification.DetailPrestasiNotification', [
+            'DataRequest' => $DataRequest,
+        ]);
+    }
+
+    public function AcceptRequest (Request $request) {
+        $DataRequest = RequestPrestasi::with('Mahasiswa')->find($request->IdRequest, 'id')->first();
+
+        $sourcePath = $DataRequest->foto_bukti_prestasi;
+        $destinationPath = 'app/public/Prestasi/' . basename($sourcePath);
+        Storage::disk('public')->put($destinationPath, file_get_contents(storage_path('app/public/'.$sourcePath)));
+        Storage::delete($DataRequest->foto_bukti_prestasi);
+
+        $Administrator = auth('Admin')->user()->id;
+
+        $CreatePrestasi = Prestasi::firstOrCreate([
+            'nama_perlombaan' => ucwords(strtolower($DataRequest->nama_perlombaan)),
+            'tanggal_perlombaan' => $DataRequest->tanggal_perlombaan,
+            'tingkatan_id' => $DataRequest->Tingkatan->id,
+            'category_prestasi_id' => $DataRequest->Category->id,
+            'foto_bukti_prestasi' => 'unavailable',
+        ]);
+
+        $CreatePrestasi->update([
+            'foto_bukti_prestasi' => 'Prestasi/' . basename($sourcePath),
+        ]);
+
+
+        MahasiswaPrestasi::create([
+            'mahasiswa_id' => $DataRequest->mahasiswa_id,
+            'prestasi_id' => $CreatePrestasi->id,
+            'posisi_juara' => ucwords(strtolower($DataRequest->posisi_juara)),
+            'admin_id' => $Administrator,
+        ]);
+
+        $DataRequest->delete();
+
+        session()->flash('Success', 'Data Prestasi Telah Di Tambahkan');
+
+        return redirect(route('Dashboard.Notification'));
     }
 }

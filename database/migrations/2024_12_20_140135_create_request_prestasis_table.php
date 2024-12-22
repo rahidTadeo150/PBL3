@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('mahasiswa_id');
             $table->String('nama_perlombaan');
+            $table->String('posisi_juara');
             $table->date('tanggal_perlombaan');
             $table->String('foto_bukti_prestasi');
             $table->String('tingkatan_id');

@@ -180,6 +180,7 @@ class WebsitePanel extends Controller
         $CreatePrestasi = RequestPrestasi::create([
             'mahasiswa_id' => $ValidateData['IdMahasiswa'],
             'nama_perlombaan' => ucwords(strtolower($ValidateData['NamaPerlombaan'])),
+            'posisi_juara' => ucwords(strtolower($ValidateData['UrutanPrestasi'])),
             'tanggal_perlombaan' => $ValidateData['TanggalPerlombaan'],
             'tingkatan_id' => $ValidateData['Tingkatan'],
             'category_prestasi_id' => $ValidateData['CategoryPerlombaan'],
