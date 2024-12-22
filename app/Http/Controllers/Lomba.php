@@ -112,7 +112,7 @@ class Lomba extends Controller
 
         $ValidateData = $request->validate([
             'IdInstansi' => ['required'],
-            'NamaPerlombaan' => ['required', 'max:100', 'min:3'],
+            'NamaPerlombaan' => ['required', 'max:100', 'min:5'],
             'LinkPendaftaran' => ['required', 'min:3'],
             'TanggalPendaftaran' => ['required'],
             'TanggalPenutupan' => ['required'],

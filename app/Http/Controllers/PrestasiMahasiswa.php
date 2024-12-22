@@ -145,7 +145,7 @@ class PrestasiMahasiswa extends Controller
             'IdPrestasi' => ['required'],
             'IdEdit' => ['required'],
             'NamaPerlombaan' => ['required', 'max:200', 'min:4'],
-            'UrutanPrestasi' => ['required', 'min:4', 'max:100'],
+            'UrutanPrestasi' => ['required', 'min:5', 'max:50'],
             'TanggalPerlombaan' => ['required'],
             'Tingkatan' => ['required'],
             'CategoryPerlombaan' => ['required'],

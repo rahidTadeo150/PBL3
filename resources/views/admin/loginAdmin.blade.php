@@ -24,7 +24,7 @@
                             <img class="w-[12.52px] h-fit" src="\webdevelp\icons\Usericon-mini.png">
                         </div>
                         <div class="py-[10px] gap-x-2 flex flex-row justify-between border-b-[1px] border-b-white w-[360px]">
-                            <input autocomplete="off" name="password" class="input-form-style-1 w-full" type="text" placeholder="Password" required>
+                            <input autocomplete="off" name="password" class="input-form-style-1 w-full" type="password" placeholder="Password" required>
                             <img class="w-[12.52px] h-fit" src="\webdevelp\icons\PasswordIcon.png">
                         </div>
                         <button type="submit" class="mt-7 w-full py-[13px] bg-[#1B7CB8] text-white font-semibold rounded-[7px]">
