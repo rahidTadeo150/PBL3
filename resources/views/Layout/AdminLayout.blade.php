@@ -21,7 +21,9 @@
 
         {{-- Main Content --}}
         <div class="flex-1 h-full pt-16 pb-6 pl-4 pr-4 overflow-y-auto bg-slate-100 md:mt-16 md:pt-0 md:pl-8 md:pr-8">
-            @yield('Content')
+            <div class="container mx-auto">
+                @yield('Content')
+            </div>
         </div>
     </div>
     <script>
