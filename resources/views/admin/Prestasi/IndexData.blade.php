@@ -39,12 +39,10 @@
         </form>
         <div class="flex flex-row gap-x-3">
             <div>
-                {{-- <a href="/index-instansi-beasiswa">
-                    <button class="flex flex-row items-center justify-center gap-x-3 w-fit h-[41px] px-3 bg-blue-600 rounded-md">
+                <button class="flex flex-row items-center justify-center gap-x-3 w-fit h-[41px] px-3 bg-blue-600 rounded-md">
                         <i class="w-[20px] h-[20px] text-white" data-feather="printer"></i>
                         <p class="text-sm text-gray-50">Cetak PDF</p>
-                    </button>
-                </a> --}}
+                </button>
             </div>
             <div>
                 <a href="{{ route('Prestasi.History') }}">
