@@ -89,7 +89,6 @@ class PrestasiMahasiswa extends Controller
             'nama_perlombaan' => ucwords(strtolower($ValidateData['NamaPerlombaan'])),
             'tanggal_perlombaan' => $ValidateData['TanggalPerlombaan'],
             'tingkatan_id' => $ValidateData['Tingkatan'],
-            'urutan_prestasi'=>$ValidateData['UrutanPrestasi'],
             'category_prestasi_id' => $ValidateData['CategoryPerlombaan'],
             'foto_bukti_prestasi' => 'unavailable',
         ]);
@@ -102,7 +101,7 @@ class PrestasiMahasiswa extends Controller
         MahasiswaPrestasi::create([
             'mahasiswa_id' => $ValidateData['IdMahasiswa'],
             'prestasi_id' => $CreatePrestasi->id,
-            'posisi_juara' => ucwords(strtolower($ValidateData['UrutanPrestasi'])),
+            'posisi_juara' => $ValidateData['UrutanPrestasi'],
             'admin_id' => $ValidateData['Administrator'],
         ]);
 
@@ -166,6 +165,7 @@ class PrestasiMahasiswa extends Controller
         ]);
 
         if($request->has('FotoPrestasi')){
+            Storage::delete($PrestasiPicker->foto_bukti_prestasi);
             $ValidateData['FotoPrestasi']=$request->file('FotoPrestasi')->store('/Prestasi');
             $PrestasiPicker->update([
                 'foto_bukti_prestasi' => $ValidateData['FotoPrestasi'],
