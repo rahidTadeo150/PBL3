@@ -47,7 +47,7 @@
                 </a>
             </div>
             <div>
-                <a href="/index-history-beasiswa">
+                <a href="{{ route('Beasiswa.History.Index') }}">
                     <button class="flex flex-row items-center justify-center gap-x-3 w-fit h-[41px] px-3 bg-black rounded-md">
                         <i class="w-[20px] h-[20px] text-white" data-feather="clock"></i>
                         <p class="text-sm text-gray-50">History Data</p>
