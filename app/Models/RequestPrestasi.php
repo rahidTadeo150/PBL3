@@ -16,6 +16,14 @@ class RequestPrestasi extends Model
         return $this->belongsTo(Mahasiswa::class, 'mahasiswa_id');
     }
 
+    public function Category() {
+        return $this->belongsTo(CategoryPrestasi::class, 'category_prestasi_id');
+    }
+
+    public function Tingkatan() {
+        return $this->belongsTo(Tingkatan::class, 'tingkatan_id');
+    }
+
     public function getTanggalPenutupanAttribute($value) {
         return Carbon::parse($value)->format('d-m-Y');
     }

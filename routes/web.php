@@ -27,7 +27,7 @@ Route::get('/daftar-prestasi', [WebsitePanel::class, 'ShowListPrestasi'])->name(
 Route::middleware('MahasiswaLogedIn')->group(function () {
     Route::get('/log-out-mahasiswa', [AuthController::class, 'Logout'])->name('Login.Logout');
     Route::get('/form-pengajuan-prestasi', [WebsitePanel::class, 'RequestPrestasi'])->name('Account.RequestPrestasi');
-    Route::post('sending-request-prestasi', [WebsitePanel::class, 'SendingRequestPrestasi'])->name('Account.SendingRequestPrestasi');
+    Route::post('/sending-request-prestasi', [WebsitePanel::class, 'SendingRequestPrestasi'])->name('Account.SendingRequestPrestasi');
     Route::get('/lihat-lomba', [WebsitePanel::class, 'DetailLomba'])->name('Website.Lomba.Detail');
 });
 
@@ -41,6 +41,7 @@ Route::middleware('AdminLogedIn')->group(function () {
     Route::get('/dashboard-admin', [AdminPanel::class, 'directToDashboard'])->name('Dashboard.Index');
     Route::get('/notification-request', [AdminPanel::class, 'directToIndexNotification'])->name('Dashboard.Notification');
     Route::get('/detail-notification', [AdminPanel::class, 'directToDetailNotification'])->name('Dashboard.Notification.Detail');
+    Route::post('/accept-request', [AdminPanel::class, 'AcceptRequest'])->name('Dashboard.AcceptRequest');
 
     Route::get('/index-beasiswa', [Beasiswa::class, 'directToIndexBeasiswa'])->name('Beasiswa.Index');
     Route::get('/detail-beasiswa', [Beasiswa::class, 'directToDetailBeasiswa'])->name('Beasiswa.Detail');

@@ -101,7 +101,7 @@ class PrestasiMahasiswa extends Controller
         MahasiswaPrestasi::create([
             'mahasiswa_id' => $ValidateData['IdMahasiswa'],
             'prestasi_id' => $CreatePrestasi->id,
-            'posisi_juara' => $ValidateData['UrutanPrestasi'],
+            'posisi_juara' => ucwords(strtolower($ValidateData['UrutanPrestasi'])),
             'admin_id' => $ValidateData['Administrator'],
         ]);
 
