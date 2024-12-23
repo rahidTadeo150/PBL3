@@ -4,7 +4,7 @@
     <p class="text-2xl font-semibold">Index History Data Prestasi</p>
     <p class="text-sm text-gray-700 font-normal">Daftar Prestasi Mahasiswa yang telah Terhapus</p>
     <div class="w-full border-b-2 border-b-gray-700 mt-6 mb-8"></div>
-    <a href="{{ route('Beasiswa.Instansi.Index') }}?selection=true">
+    <a href="{{ route('Instansi.Selection', ['Prestasi' => 'true']) }}">
         <button class=" flex flex-row gap-x-2 items-center py-[10px] px-[20px] bg-[#21CF11] mb-8 rounded">
             <i class="w-[20px] h-[20px] text-white" data-feather="plus"></i>
             <p class="text-white text-[13px] font-medium">Tambah Data</p>
@@ -58,7 +58,7 @@
     <p class="text-sm text-slate-800 mb-3">Data Yang Ditemukan : {{ $TotalDatas }}</p>
     <div class="relative overflow-x-auto">
         <table class="w-full text-sm text-left rounded-md rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-900 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+            <thead class="text-xs uppercase bg-gray-700 text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3 font-semibold">
                         Foto Mahasiswa
@@ -83,7 +83,7 @@
             <tbody>
                 @if (!empty($Datas[0]))
                 @foreach ($Datas as $Prestasi)
-                <tr class="bg-transparent border-b border-gray-300 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <tr class="border-b bg-gray-800 border-gray-700 hover:bg-gray-600">
                     <th scope="row" class="px-10 py-4 text-sm font-normal text-white">
                         <div class="w-[75px] h-[75px] rounded overflow-hidden">
                             <img src="/storage{{ $Prestasi->Mahasiswa->foto_mahasiswa }}" class="w-full h-full">

@@ -58,7 +58,7 @@
     <p class="text-sm text-slate-800 mb-3">Data Yang Ditemukan : 12</p>
     <div class="relative overflow-x-auto">
         <table class="w-full text-sm text-left rounded-md rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-900 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+            <thead class="text-xs uppercase bg-gray-700 text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3 font-semibold">
                         Foto Brosur
@@ -80,7 +80,7 @@
             <tbody>
                 @if (!empty($Datas[0]))
                 @foreach ($Datas as $Beasiswa)
-                <tr class="bg-transparent border-b border-gray-300 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <tr class="border-b bg-gray-800 border-gray-700 hover:bg-gray-600">
                     <th scope="row" class="px-6 py-4 text-sm font-normal text-gray-700 dark:text-white">
                         <img src="\storage{{ $Beasiswa->foto_beasiswa }}" class="w-20 h-20 rounded">
                     </th>
