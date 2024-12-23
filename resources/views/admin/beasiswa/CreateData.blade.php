@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="w-full text-end">
-                <a href="{{ route('Instansi.SelectInstansi') }}" class="text-blue-500 font-medium text-[13px] hover:underline">
+                <a href="{{ route('Instansi.Selection', ['Beasiswa' => 'true']) }}" class="text-blue-500 font-medium text-[13px] hover:underline">
                     Ganti Instansi
                 </a>
             </div>
