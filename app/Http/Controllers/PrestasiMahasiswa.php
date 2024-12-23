@@ -13,11 +13,12 @@ use Illuminate\Http\Request;
 
 class PrestasiMahasiswa extends Controller
 {
-    public function DirectToIndexPrestasi(Request $request){
-        if(empty($request->search)) {
-            $DataPrestasi =  MahasiswaPrestasi::with('Mahasiswa')->orderBy('created_at', 'desc')->get();
+    public function DirectToIndexPrestasi(Request $request)
+    {
+        if (empty($request->search)) {
+            $DataPrestasi = MahasiswaPrestasi::with('Mahasiswa')->orderBy('created_at', 'desc')->get();
         }
-        $TotalDatas =  MahasiswaPrestasi::all()->count();
+        $TotalDatas = MahasiswaPrestasi::all()->count();
 
         if ($request->Filter == 'Nama Mahasiswa') {
             $DataPrestasi = MahasiswaPrestasi::whereHas('Mahasiswa', function ($query) use ($request) {
@@ -39,9 +40,10 @@ class PrestasiMahasiswa extends Controller
         ]);
     }
 
-    public function directToIndexHistoryPrestasi(){
-        $DataPrestasi =  MahasiswaPrestasi::with('Mahasiswa')->orderBy('created_at', 'desc')->onlyTrashed()->get();
-        $TotalDatas =  MahasiswaPrestasi::onlyTrashed()->count();
+    public function directToIndexHistoryPrestasi()
+    {
+        $DataPrestasi = MahasiswaPrestasi::with('Mahasiswa')->orderBy('created_at', 'desc')->onlyTrashed()->get();
+        $TotalDatas = MahasiswaPrestasi::onlyTrashed()->count();
 
         return view('admin.Prestasi.IndexHistoryData', [
             'Datas' => $DataPrestasi,
@@ -49,9 +51,10 @@ class PrestasiMahasiswa extends Controller
         ]);
     }
 
-    public function SelectionMahasiswa(){
-        $DataMahasiswa =  Mahasiswa::with('Prodi')->orderBy('created_at', 'desc')->get();
-        $TotalDatas =  Mahasiswa::all()->count();
+    public function SelectionMahasiswa()
+    {
+        $DataMahasiswa = Mahasiswa::with('Prodi')->orderBy('created_at', 'desc')->get();
+        $TotalDatas = Mahasiswa::all()->count();
 
         return view('admin.Prestasi.SelectMahasiswa', [
             'Datas' => $DataMahasiswa,
@@ -59,19 +62,21 @@ class PrestasiMahasiswa extends Controller
         ]);
     }
 
-    public function directToCreatePrestasi(Request $request) {
+    public function directToCreatePrestasi(Request $request)
+    {
         $DataMahasiswa = Mahasiswa::find($request->IdMahasiswa);
         $Tingkatan = Tingkatan::all();
         $CategoryPerlombaan = CategoryPrestasi::all();
 
-        return view('admin.Prestasi.CreateData',[
+        return view('admin.Prestasi.CreateData', [
             'DataMahasiswa' => $DataMahasiswa,
             'Tingkatan' => $Tingkatan,
             'Category' => $CategoryPerlombaan,
         ]);
     }
 
-    public function StoreDataPrestasi(Request $request) {
+    public function StoreDataPrestasi(Request $request)
+    {
         $ValidateData = $request->validate([
             'IdMahasiswa' => ['required'],
             'NamaPerlombaan' => ['required', 'max:200', 'min:4'],
@@ -79,11 +84,11 @@ class PrestasiMahasiswa extends Controller
             'TanggalPerlombaan' => ['required'],
             'Tingkatan' => ['required'],
             'CategoryPerlombaan' => ['required'],
-            'FotoPrestasi' => ['required', 'image', 'mimes:jpeg,jpg,png','file', 'max:5120'],
+            'FotoPrestasi' => ['required', 'image', 'mimes:jpeg,jpg,png', 'file', 'max:5120'],
         ]);
 
         $ValidateData['Administrator'] = auth('Admin')->user()->id;
-        $ValidateData['FotoPrestasi']=$request->file('FotoPrestasi')->store('/Prestasi');
+        $ValidateData['FotoPrestasi'] = $request->file('FotoPrestasi')->store('/Prestasi');
 
         $CreatePrestasi = Prestasi::firstOrCreate([
             'nama_perlombaan' => ucwords(strtolower($ValidateData['NamaPerlombaan'])),
@@ -108,7 +113,8 @@ class PrestasiMahasiswa extends Controller
         return redirect(route('Prestasi.Index'))->with('InstansiSuccessAdded', 'Data Instansi Telah Berhasil Di Tambahkan');
     }
 
-    public function DeletePrestasi(Request $request){
+    public function DeletePrestasi(Request $request)
+    {
         $DataPicker = MahasiswaPrestasi::find($request->IdPrestasi);
 
         $DataPicker->delete();
@@ -120,7 +126,8 @@ class PrestasiMahasiswa extends Controller
         return redirect(route('Prestasi.Index'));
     }
 
-    public function EditPrestasi(Request $request) {
+    public function EditPrestasi(Request $request)
+    {
         $DataPrestasi = MahasiswaPrestasi::find($request->IdPrestasi);
         if ($request->ChangesMahasiswa) {
             $DataMahasiswa = Mahasiswa::find($request->IdMahasiswa);
@@ -131,7 +138,7 @@ class PrestasiMahasiswa extends Controller
         $Tingkatan = Tingkatan::all();
         $CategoryPerlombaan = CategoryPrestasi::all();
 
-        return view('admin.Prestasi.EditData',[
+        return view('admin.Prestasi.EditData', [
             'Data' => $DataPrestasi,
             'DataMahasiswa' => $DataMahasiswa,
             'Tingkatan' => $Tingkatan,
@@ -139,7 +146,8 @@ class PrestasiMahasiswa extends Controller
         ]);
     }
 
-    public function UpdatePrestasi(Request $request) {
+    public function UpdatePrestasi(Request $request)
+    {
         $ValidateData = $request->validate([
             'IdMahasiswa' => ['required'],
             'IdPrestasi' => ['required'],
@@ -149,7 +157,7 @@ class PrestasiMahasiswa extends Controller
             'TanggalPerlombaan' => ['required'],
             'Tingkatan' => ['required'],
             'CategoryPerlombaan' => ['required'],
-            'FotoPrestasi' => ['nullable', 'image', 'mimes:jpeg,jpg,png','file', 'max:5120'],
+            'FotoPrestasi' => ['nullable', 'image', 'mimes:jpeg,jpg,png', 'file', 'max:5120'],
         ]);
 
         $ValidateData['Administrator'] = auth('Admin')->user()->id;
@@ -157,33 +165,41 @@ class PrestasiMahasiswa extends Controller
         $MahasiswaPrestasiPicker = MahasiswaPrestasi::find($ValidateData['IdEdit']);
 
         $PrestasiPicker->update([
+            'mahasiswa_id' => $ValidateData['IdMahasiswa'],
             'nama_perlombaan' => $ValidateData['NamaPerlombaan'],
-            'urutan_prestasi' => $ValidateData['UrutanPrestasi'],
             'tanggal_perlombaan' => $ValidateData['TanggalPerlombaan'],
             'tingkatan_id' => $ValidateData['Tingkatan'],
             'category_prestasi_id' => $ValidateData['CategoryPerlombaan'],
         ]);
 
-        if($request->has('FotoPrestasi')){
+        if ($request->has('FotoPrestasi')) {
             Storage::delete($PrestasiPicker->foto_bukti_prestasi);
-            $ValidateData['FotoPrestasi']=$request->file('FotoPrestasi')->store('/Prestasi');
+            $ValidateData['FotoPrestasi'] = $request->file('FotoPrestasi')->store('/Prestasi');
             $PrestasiPicker->update([
                 'foto_bukti_prestasi' => $ValidateData['FotoPrestasi'],
             ]);
         }
+        $Mahasiswa = Mahasiswa::find($ValidateData['IdMahasiswa']);
 
+        if (!$Mahasiswa) {
+            session()->flash('Error', 'Mahasiswa tidak ditemukan');
+            return redirect()->back();
+        }
+        $PrestasiPicker = Prestasi::find($ValidateData['IdPrestasi']);
+        $Mahasiswa = $PrestasiPicker->mahasiswaPrestasi()->find($ValidateData['IdEdit'])->mahasiswa;
 
         $MahasiswaPrestasiPicker->update([
-            'mahasiswa_id' => $ValidateData['IdMahasiswa'],
-            'prestasi_id' => $PrestasiPicker->id
+            'prestasi_id' => $PrestasiPicker->id,
+            'posisi_juara' => $ValidateData['UrutanPrestasi'],
         ]);
 
         session()->flash('Success', 'Data Prestasi Telah Di Edit');
 
-        return redirect( route('Prestasi.Edit', ['IdPrestasi' => $MahasiswaPrestasiPicker->id]) );
+        return redirect(route('Prestasi.Index', ['IdPrestasi' => $MahasiswaPrestasiPicker->id]));
     }
 
-    public function RestorePrestasi(Request $request) {
+    public function RestorePrestasi(Request $request)
+    {
         $PrestasiPicker = Prestasi::withTrashed()->find($request->IdPrestasi);
         $MahasiswaPrestasiPicker = MahasiswaPrestasi::withTrashed()->find($request->IdMahasiswaPrestasi);
 
