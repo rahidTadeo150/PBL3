@@ -130,7 +130,7 @@
                         {{ $Prestasi->Mahasiswa->nama_mahasiswa }}
                     </td>
                     <td class="px-6 py-4 text-sm font-normal text-white">
-                        {{ $Prestasi->Prestasi->nama_perlombaan }} ({{ $Prestasi->Prestasi->urutan_prestasi }})
+                        {{ $Prestasi->Prestasi->nama_perlombaan }} ({{ $Prestasi->posisi_juara }})
                     </td>
                     <td class="px-6 py-4 text-sm font-normal text-white">
                         {{ $Prestasi->Prestasi->CategoryPrestasi->category }}

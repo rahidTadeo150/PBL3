@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('mahasiswa_id');
             $table->foreignId('prestasi_id');
+            $table->string('posisi_juara');
             $table->foreignId('admin_id');
             $table->timestamps();
         });
