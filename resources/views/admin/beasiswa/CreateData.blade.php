@@ -110,7 +110,7 @@
                     </div>
                 </div>
                 <div class="flex flex-row">
-                    <a href="/index-instansi-beasiswa" type="submit" class="p-3 pl-8 pr-8 bg-slate-400 mt-10 mb-10 w-fit rounded-md">
+                    <a href="{{ route('Beasiswa.Index') }}" type="submit" class="p-3 pl-8 pr-8 bg-slate-400 mt-10 mb-10 w-fit rounded-md">
                         <p class="text-gray-900 text-md font-semibold">Cancel</p>
                     </a>
                     <button id="SubmitButton" onclick="confirm('Ingin Menyimpan Instansi Ini')" type="submit" class="disabled-submit-button ml-5 p-3 pl-8 pr-8 mt-10 mb-10 w-96 rounded-md" disabled>

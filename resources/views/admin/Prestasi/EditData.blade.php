@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="w-full text-end">
-                <a href="{{ route('Prestasi.MahasiswaSelect') }}?ChangesMahasiswa=True&IdPrestasi={{ $Data->id }}" class="text-blue-500 font-medium text-[13px] hover:underline">
+                <a href="{{ route('Prestasi.MahasiswaSelect') }}?ChangesMahasiswa=True&IdPrestasi={{ $DataMahasiswa->id }}" class="text-blue-500 font-medium text-[13px] hover:underline">
                     Ganti Mahasiswa
                 </a>
             </div>

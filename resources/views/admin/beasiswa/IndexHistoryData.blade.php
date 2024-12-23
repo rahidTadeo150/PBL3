@@ -4,7 +4,7 @@
     <p class="text-2xl font-semibold">Index History Data</p>
     <p class="text-sm text-gray-700 font-normal">Daftar beasiswa yang telah Terhapus</p>
     <div class="w-full border-b-2 border-b-gray-700 mt-6 mb-8"></div>
-    <a href="{{ route('Beasiswa.Instansi.Index') }}?selection=true">
+    <a href="{{ route('Instansi.Selection', ['Beasiswa' => 'true']) }}">
         <button class=" flex flex-row gap-x-2 items-center py-[10px] px-[20px] bg-[#21CF11] mb-8 rounded">
             <i class="w-[20px] h-[20px] text-white" data-feather="plus"></i>
             <p class="text-white text-[13px] font-medium">Tambah Data</p>
