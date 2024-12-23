@@ -75,7 +75,7 @@ class PrestasiMahasiswa extends Controller
         $ValidateData = $request->validate([
             'IdMahasiswa' => ['required'],
             'NamaPerlombaan' => ['required', 'max:200', 'min:4'],
-            'UrutanPrestasi' => ['required', 'min:4', 'max:100'],
+            'UrutanPrestasi' => ['required', 'min:5', 'max:50'],
             'TanggalPerlombaan' => ['required'],
             'Tingkatan' => ['required'],
             'CategoryPerlombaan' => ['required'],
@@ -89,6 +89,7 @@ class PrestasiMahasiswa extends Controller
             'nama_perlombaan' => ucwords(strtolower($ValidateData['NamaPerlombaan'])),
             'tanggal_perlombaan' => $ValidateData['TanggalPerlombaan'],
             'tingkatan_id' => $ValidateData['Tingkatan'],
+            'urutan_prestasi'=>$ValidateData['UrutanPrestasi'],
             'category_prestasi_id' => $ValidateData['CategoryPerlombaan'],
             'foto_bukti_prestasi' => 'unavailable',
         ]);
@@ -145,7 +146,7 @@ class PrestasiMahasiswa extends Controller
             'IdPrestasi' => ['required'],
             'IdEdit' => ['required'],
             'NamaPerlombaan' => ['required', 'max:200', 'min:4'],
-            'UrutanPrestasi' => ['required', 'min:4', 'max:100'],
+            'UrutanPrestasi' => ['required', 'min:5', 'max:50'],
             'TanggalPerlombaan' => ['required'],
             'Tingkatan' => ['required'],
             'CategoryPerlombaan' => ['required'],

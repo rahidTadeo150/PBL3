@@ -81,7 +81,7 @@
             <tbody>
                 @if (!empty($Datas[0]))
                 @foreach ($Datas as $Beasiswa)
-                <tr class="bg-transparent border-b border-gray-300 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <tr class="border-b bg-gray-800 border-gray-700 hover:bg-gray-600">
                     <th scope="row" class="px-6 py-4 text-sm font-normal text-gray-700 dark:text-white">
                         <img src="\storage{{ $Beasiswa->foto_beasiswa }}" class="w-20 h-20 rounded">
                     </th>

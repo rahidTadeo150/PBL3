@@ -112,12 +112,12 @@ class Lomba extends Controller
 
         $ValidateData = $request->validate([
             'IdInstansi' => ['required'],
-            'NamaPerlombaan' => ['required', 'max:100', 'min:3'],
+            'NamaPerlombaan' => ['required', 'max:100', 'min:5'],
             'LinkPendaftaran' => ['required', 'min:3'],
             'TanggalPendaftaran' => ['required'],
             'TanggalPenutupan' => ['required'],
             'Tingkatan' => ['required'],
-            'Persyaratan' => ['required'],
+            'Persyaratan' => ['required', 'min:10', 'max:255'],
             'FotoLomba' => ['nullable', 'image', 'mimes:jpeg,jpg,png','file', 'max:5120'],
         ]);
         $ValidateData['Administrator'] = auth('Admin')->user()->id;

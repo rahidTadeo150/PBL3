@@ -294,6 +294,7 @@ class DatabaseSeeder extends Seeder
 
         Prestasi::create([
             'nama_perlombaan' => 'Lomba Aitec 2024',
+            'urutan_prestasi' => 'Juara 1',
             'foto_bukti_prestasi' => '/Prestasi/47103-timnas-indonesia-juara-easian-cup-2023.jpg',
             'tingkatan_id' => 2,
             'tanggal_perlombaan' => '2024-05-10',
@@ -303,7 +304,6 @@ class DatabaseSeeder extends Seeder
         MahasiswaPrestasi::create([
             'mahasiswa_id' => 2,
             'prestasi_id' => 1,
-            'posisi_juara' => 'Juara 1',
             'admin_id' => 1,
         ]);
     }

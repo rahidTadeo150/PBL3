@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('prestasi', function (Blueprint $table) {
             $table->id();
             $table->String('nama_perlombaan');
+            $table->string('urutan_prestasi');
             $table->date('tanggal_perlombaan');
             $table->String('foto_bukti_prestasi');
             $table->String('tingkatan_id');
