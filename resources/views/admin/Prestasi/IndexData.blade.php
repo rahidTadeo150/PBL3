@@ -4,7 +4,7 @@
     @if (Session('Success'))
     @include('Modal.SuccessModalCRUD')
     @endif
-    <div class="absolute inset-x-0 inset-y-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+    {{-- <div class="absolute inset-x-0 inset-y-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
         <div class="bg-white absolute z-[51] w-[500px] h-fit py-[8px] rounded-[5px] px-[10px] flex flex-col gap-y-[10px]">
             <div class="flex flex-col items-end w-full">
                 <i class="w-[16px]" data-feather="x"></i>
@@ -38,7 +38,7 @@
                 </button>
             </div>
         </div>
-    </div>
+    </div> --}}
     <p class="text-2xl font-semibold">Index Data Prestasi</p>
     <p class="text-sm font-normal text-gray-700">Daftar Prestasi Mahasiswa yang telah terdaftar di Lobi Poliwangi</p>
     <div class="w-full mt-6 mb-8 border-b-2 border-b-gray-700"></div>
