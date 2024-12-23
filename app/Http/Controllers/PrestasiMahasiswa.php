@@ -89,7 +89,7 @@ class PrestasiMahasiswa extends Controller
             'nama_perlombaan' => ucwords(strtolower($ValidateData['NamaPerlombaan'])),
             'tanggal_perlombaan' => $ValidateData['TanggalPerlombaan'],
             'tingkatan_id' => $ValidateData['Tingkatan'],
-            'urutan_prestasi'=>$ValidateData['urutanPrestasi'],
+            'urutan_prestasi'=>$ValidateData['UrutanPrestasi'],
             'category_prestasi_id' => $ValidateData['CategoryPerlombaan'],
             'foto_bukti_prestasi' => 'unavailable',
         ]);
