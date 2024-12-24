@@ -83,7 +83,7 @@ class Instansi extends Controller
 
         session()->flash('Success', 'Data Prestasi Telah Di Tambahkan');
 
-        return redirect(route('admin.Instansi.Index'))->with('InstansiSuccessAdded', 'Data Instansi Telah Berhasil Di Tambahkan');
+        return redirect(route('Instansi.Index'))->with('InstansiSuccessAdded', 'Data Instansi Telah Berhasil Di Tambahkan');
     }
 
     public function DeleteInstansi() {

@@ -2,7 +2,7 @@
 
 @section('Content')
     <div class="w-full h-fit bg-white rounded-md py-5 px-8">
-        <form action="/store-data-instansi-beasiswa" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('Instansi.Store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="flex flex-row justify-between">
                 <div>

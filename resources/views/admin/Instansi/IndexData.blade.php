@@ -70,8 +70,8 @@
                 @foreach ($Datas as $Instansi)
                 <tr class="border-b bg-gray-800 border-gray-700 hover:bg-gray-600">
                     <td class="px-6 py-4 text-sm font-normal text-white flex flex-col items-center">
-                        <div class="w-[40px] rounded-full overflow-hidden">
-                            <img class="w-full h-full" src="/storage/{{ $Instansi->foto_profile }}">
+                        <div class="w-[40px] h-[40px] rounded-full overflow-hidden">
+                            <img class="w-full h-full object-cover" src="/storage/{{ $Instansi->foto_profile }}">
                         </div>
                     </td>
                     <td class="min-w-[180px] px-6 py-4 text-sm font-normal text-white">
