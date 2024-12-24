@@ -90,7 +90,47 @@ class Instansi extends Controller
         dd('Masuk Delete Instansi');
     }
 
-    public function EditInstansi() {
-        dd('Masuk Edit Instansi');
+    public function EditInstansi(Request $request) {
+        $InstansiRelation = ['Admin'];
+        $Instansi = dbInstansi::find($request->IdInstansi);
+        if (!$Instansi) {
+            return redirect(route('Instansi.Index'))->withErrors(['error' => 'Data Instansi tidak ditemukan']);
+        }
+    
+        return view('admin.Instansi.EditData', [
+            'Instansi' => $Instansi,
+        ]);
     }
+    public function UpdateInstansi(Request $request) {
+        $ValidateData = $request->validate([
+            'NamaInstansi' => ['required', 'max:62', 'min:3'],
+            'NoTelephone' => ['required', 'max:13', 'min:11', 'regex:/^[0-9]+$/'],
+            'Alamat' => ['required', 'max:100', 'min:20'],
+            'Email' => ['required', 'max:62', 'min:5', 'email:rfc,dns'],
+            'FotoInstansi' => ['nullable', 'image', 'mimes:jpeg,jpg,png','file', 'max:5120'],
+        ]);
+    
+        $Instansi = dbInstansi::find($request->IdInstansi);
+    
+        if (!$Instansi) {
+            return redirect(route('Instansi.Index'))->withErrors(['error' => 'Data Instansi tidak ditemukan']);
+        }
+    
+        $ValidateData['Administrator'] = auth('Admin')->user()->id;
+    
+        if ($request->has('FotoInstansi')) {
+            $ValidateData['FotoInstansi'] = $request->file('FotoInstansi')->store('/Instansi');
+            $Instansi->update(['foto_profile' => $ValidateData['FotoInstansi']]);
+        }
+    
+        $Instansi->update([
+            'nama_instansi' => $ValidateData['NamaInstansi'],
+            'no_telephone' => $ValidateData['NoTelephone'],
+            'email' => $ValidateData['Email'],
+            'alamat' => $ValidateData['Alamat'],
+            'account_admin_id' => $ValidateData['Administrator'],
+        ]);
+    
+        return redirect(route('Instansi.Index'))->with('Success', 'Data Instansi Berhasil Diperbarui');
+    }        
 }
