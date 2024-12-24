@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Storage;
 class Lomba extends Controller
 {
     public function directToIndexLomba(Request $request) {
+        $TotalDatas = dbLomba::all()->count();
         $DataLomba = dbLomba::with('Instansi')->orderBy('created_at', 'desc')->get();
-
         if ($request->Filter == 'Nama Perlombaan') {
             $DataLomba = dbLomba::where('nama_perlombaan', 'like', '%'.$request->search.'%')->orderBy('created_at', 'desc')->get();
         } else if ($request->Filter == 'Instansi Perlombaan') {
@@ -27,14 +27,17 @@ class Lomba extends Controller
         }
 
         return view('admin.Lomba.IndexData', [
-            'Datas' => $DataLomba
+            'Datas' => $DataLomba,
+            'TotalDatas' => $TotalDatas,
         ]);
     }
 
     public function directToIndexHistoryLomba() {
         $DataLomba = dbLomba::onlyTrashed()->get()->load('Instansi');
+        $TotalDatas = dbLomba::onlyTrashed()->count();
         return view('admin.Lomba.IndexHistoryData', [
-            'Datas' => $DataLomba
+            'Datas' => $DataLomba,
+            'TotalDatas' => $TotalDatas,
         ]);
     }
 

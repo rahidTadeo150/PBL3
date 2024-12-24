@@ -38,14 +38,6 @@
         </form>
         <div class="flex flex-row gap-x-3">
             <div>
-                <a href="/index-instansi-beasiswa">
-                    <button class="flex flex-row items-center justify-center gap-x-3 w-fit h-[41px] px-3 bg-blue-600 rounded-md">
-                        <i class="w-[20px] h-[20px] text-white" data-feather="list"></i>
-                        <p class="text-sm text-gray-50">Daftar Instansi</p>
-                    </button>
-                </a>
-            </div>
-            <div>
                 <a href="{{ route('Prestasi.Index') }}">
                     <button class="flex flex-row items-center justify-center gap-x-3 w-fit h-[41px] px-3 bg-black rounded-md">
                         <i class="w-[20px] h-[20px] text-white" data-feather="clock"></i>
@@ -96,7 +88,7 @@
                         {{ $Prestasi->Mahasiswa->nama_mahasiswa }}
                     </td>
                     <td class="px-6 py-4 text-sm font-normal text-white">
-                        {{ $Prestasi->Prestasi->nama_perlombaan }} ({{ $Prestasi->Prestasi->urutan_prestasi }})
+                        {{ $Prestasi->Prestasi->nama_perlombaan }} ({{ $Prestasi->posisi_juara }})
                     </td>
                     <td class="px-6 py-4 text-sm font-normal text-white">
                         {{ $Prestasi->Prestasi->CategoryPrestasi->category }}
