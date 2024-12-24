@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Http\Controllers\Controller;
 use App\Models\Instansi as dbInstansi;
 use Illuminate\Http\Request;
+
 
 class Instansi extends Controller
 {
@@ -86,9 +86,19 @@ class Instansi extends Controller
         return redirect(route('Instansi.Index'))->with('InstansiSuccessAdded', 'Data Instansi Telah Berhasil Di Tambahkan');
     }
 
-    public function DeleteInstansi() {
-        dd('Masuk Delete Instansi');
+    public function DeleteInstansi($id) {
+        $instansi = dbInstansi::find($id);
+        
+        if ($instansi) {
+            $instansi->delete();
+            return redirect()->route('Instansi.Index')->with('success', 'Instansi berhasil dihapus.');
+        } else {
+            return redirect()->route('Instansi.Index')->with('error', 'Instansi tidak ditemukan.');
+        }
     }
+    
+    
+    
 
     public function EditInstansi(Request $request) {
         $InstansiRelation = ['Admin'];

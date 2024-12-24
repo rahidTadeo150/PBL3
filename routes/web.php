@@ -59,7 +59,8 @@ Route::middleware('AdminLogedIn')->group(function () {
     Route::post('/store-data-instansi', [Instansi::class, 'StoreDataInstansi'])->name('Instansi.Store');
     Route::get('/edit-instansi', [Instansi::class, 'EditInstansi'])->name('Instansi.Edit');
     Route::put('/updating-instansi', [Instansi::class, 'UpdateInstansi'])->name('Instansi.Update');
-    Route::delete('/delete-instansi', [Instansi::class, 'DeleteInstansi'])->name('Instansi.Delete');
+    Route::delete('/delete-instansi/{id}', [Instansi::class, 'DeleteInstansi'])->name('Instansi.Delete');
+
 
     Route::get('/index-lomba', [Lomba::class, 'directToIndexLomba'])->name('Lomba.Index');
     Route::get('/index-history-lomba', [Lomba::class, 'directToIndexHistoryLomba'])->name('Lomba.HistoryData');
