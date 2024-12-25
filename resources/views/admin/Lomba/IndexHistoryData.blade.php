@@ -38,7 +38,7 @@
         </form>
         <div class="flex flex-row gap-x-3">
             <div>
-                <a href="/index-instansi-beasiswa">
+                <a href="{{ route('Instansi.Index') }}">
                     <button class="flex flex-row items-center justify-center gap-x-3 w-fit h-[41px] px-3 bg-blue-600 rounded-md">
                         <i class="w-[20px] h-[20px] text-white" data-feather="list"></i>
                         <p class="text-sm text-gray-50">Daftar Instansi</p>
@@ -55,7 +55,7 @@
             </div>
         </div>
     </div>
-    <p class="text-sm text-slate-800 mb-3">Data Yang Ditemukan : 12</p>
+    <p class="text-sm text-slate-800 mb-3">Data Yang Ditemukan : {{ $TotalDatas }}</p>
     <div class="relative overflow-x-auto">
         <table class="w-full text-sm text-left rounded-md rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs uppercase bg-gray-700 text-gray-400">

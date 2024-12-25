@@ -91,14 +91,16 @@
                                     <i class="w-[15px] h-[15px]" data-feather="edit-3"></i>
                                 </div>
                             </a>
-                            <form action="{{ route('Instansi.Delete') }}" method="post">
+                            <form action="{{ route('Instansi.Delete', $Instansi->id) }}" method="POST">
                                 @csrf
-                                @method('delete')
-                                <input type="hidden" name="IdPrestasi" value="{{ $Instansi->id }}">
-                                <button type="submit" class="cursor-pointer w-[28px] h-[28px] rounded bg-[#D02A2A] flex flex-col items-center justify-center">
+                                @method('DELETE')
+                                <button type="submit" 
+                                    onclick="return confirm('Apakah Anda yakin ingin menghapus instansi ini?')" 
+                                    class="cursor-pointer w-[28px] h-[28px] rounded bg-[#D02A2A] flex flex-col items-center justify-center">
                                     <i class="w-[15px] h-[15px]" data-feather="trash-2"></i>
                                 </button>
                             </form>
+                            
                         </div>
                     </td>
                 </tr>

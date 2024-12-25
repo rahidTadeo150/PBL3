@@ -56,7 +56,7 @@
             </div>
         </div>
     </div>
-    <p class="text-sm text-slate-800 mb-3">Data Yang Ditemukan : 12</p>
+    <p class="text-sm text-slate-800 mb-3">Data Yang Ditemukan : {{ $TotalDatas }}</p>
     <div class="relative overflow-x-auto">
         <table class="w-full text-sm text-left rounded-md rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs uppercase bg-gray-700 text-gray-400">

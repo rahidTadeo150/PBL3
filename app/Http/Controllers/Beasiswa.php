@@ -12,6 +12,7 @@ use Carbon\Carbon;
 class Beasiswa extends Controller
 {
     public function directToIndexBeasiswa(Request $request) {
+        $TotalDatas = dbBeasiswa::all()->count();
         $DataBeasiswa = dbBeasiswa::with('instansi')->orderBy('created_at', 'desc')->get();
 
         if ($request->Filter == 'Nama Beasiswa') {
@@ -26,14 +27,16 @@ class Beasiswa extends Controller
 
         return view('admin.beasiswa.IndexData', [
             'Datas' => $DataBeasiswa,
+            'TotalDatas' => $TotalDatas,
         ]);
     }
 
     public function directToIndexHistoryBeasiswa(Request $request) {
         $DataBeasiswa = dbBeasiswa::with('Instansi')->onlyTrashed()->orderBy('deleted_at', 'desc')->get();
-
+        $TotalDatas = dbBeasiswa::onlyTrashed()->count();
         return view('admin.beasiswa.IndexHistoryData', [
-            'Datas' => $DataBeasiswa
+            'Datas' => $DataBeasiswa,
+            'TotalDatas' => $TotalDatas,
         ]);
     }
 

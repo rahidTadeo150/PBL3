@@ -62,7 +62,9 @@ Route::middleware('AdminLogedIn')->group(function () {
     Route::get('/form-instansi', [Instansi::class, 'directToCreateInstansiBeasiswa'])->name('Instansi.Create');
     Route::post('/store-data-instansi', [Instansi::class, 'StoreDataInstansi'])->name('Instansi.Store');
     Route::get('/edit-instansi', [Instansi::class, 'EditInstansi'])->name('Instansi.Edit');
-    Route::delete('/delete-instansi', [Instansi::class, 'DeleteInstansi'])->name('Instansi.Delete');
+    Route::put('/updating-instansi', [Instansi::class, 'UpdateInstansi'])->name('Instansi.Update');
+    Route::delete('/delete-instansi/{id}', [Instansi::class, 'DeleteInstansi'])->name('Instansi.Delete');
+
 
     // Lomba Route
     Route::get('/index-lomba', [Lomba::class, 'directToIndexLomba'])->name('Lomba.Index');
