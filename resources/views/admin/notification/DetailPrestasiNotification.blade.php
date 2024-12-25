@@ -2,7 +2,7 @@
 
 @section('Content')
     <div class="w-full h-full py-[25px]">
-        <p class="text-2xl font-semibold">Index Data Lomba</p>
+        <p class="text-2xl font-semibold">Pengajuan Prestasi</p>
         <p class="text-sm font-normal text-gray-700">Detail Informasi Pengajuan Prestasi Yang Di Ajukan Mahasiswa</p>
         <div class="w-full mt-6 mb-8 border-b-2 border-b-gray-700"></div>
         <div class="flex flex-row items-center justify-between gap-x-[40px]">

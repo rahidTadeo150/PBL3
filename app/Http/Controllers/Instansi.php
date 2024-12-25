@@ -97,9 +97,6 @@ class Instansi extends Controller
         }
     }
     
-    
-    
-
     public function EditInstansi(Request $request) {
         $InstansiRelation = ['Admin'];
         $Instansi = dbInstansi::find($request->IdInstansi);
