@@ -1,6 +1,9 @@
 @extends('Layout.AdminLayout')
 
 @section('Content')
+    @if (Session('Success'))
+    @include('Modal.SuccessModalCRUD')
+    @endif
     <div class="flex flex-row justify-between">
         <div class="w-screen">
             <p class="text-[28px] font-bold">Mail Request Notification</p>
@@ -14,7 +17,7 @@
                 <div class="relative bg-white w-full h-[136px] shadow-lg rounded-[5px] px-[20px] hover:-translate-y-2 ease-in duration-100">
                     <div class="flex flex-row items-center w-full h-full gap-x-6">
                         <div class="w-[75px] h-[75px] rounded-full overflow-hidden">
-                            <img src="storage{{ $Data->Mahasiswa->foto_mahasiswa }}" class="w-full h-full">
+                            <img src="\storage\{{ $Data->Mahasiswa->foto_mahasiswa }}" class="w-full h-full">
                         </div>
                         <div>
                             <p class="text-[17px] font-semibold leading-4">{{ $Data->Mahasiswa->nama_mahasiswa }}</p>
@@ -66,4 +69,5 @@
             </button>
         </div> --}}
     </div>
+    <script src="\JavascriptDevelp\CloseModal.js"></script>
 @endsection

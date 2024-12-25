@@ -44,6 +44,7 @@ Route::middleware('AdminLogedIn')->group(function () {
     Route::get('/notification-request', [AdminPanel::class, 'directToIndexNotification'])->name('Dashboard.Notification');
     Route::get('/detail-notification', [AdminPanel::class, 'directToDetailNotification'])->name('Dashboard.Notification.Detail');
     Route::post('/accept-request', [AdminPanel::class, 'AcceptRequest'])->name('Dashboard.AcceptRequest');
+    Route::delete('/reject-request', [AdminPanel::class, 'RejectRequest'])->name('Dashboard.RejectRequest');
 
     // Beasiswa Route
     Route::get('/index-beasiswa', [Beasiswa::class, 'directToIndexBeasiswa'])->name('Beasiswa.Index');

@@ -51,12 +51,17 @@
                             </div>
                         </button>
                     </form>
-                    <button class="px-[32px] py-[9px] bg-[#C80000] rounded-[5px]">
-                        <div class="flex flex-row items-center justify-center gap-x-2">
-                            <img class="w-[15px] h-[15px]" src="\webdevelp\icons\IconRejectSubmission.png">
-                            <p class="text-[12px] text-white">Reject Submission</p>
-                        </div>
-                    </button>
+                    <form action="{{ route('Dashboard.RejectRequest') }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <input type="hidden" name="IdRequest" value="{{ $DataRequest->id }}">
+                        <button class="px-[32px] py-[9px] bg-[#C80000] rounded-[5px]">
+                            <div class="flex flex-row items-center justify-center gap-x-2">
+                                <img class="w-[15px] h-[15px]" src="\webdevelp\icons\IconRejectSubmission.png">
+                                <p class="text-[12px] text-white">Reject Submission</p>
+                            </div>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

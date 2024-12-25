@@ -97,17 +97,19 @@
                 <div
                     class="hidden overflow-y-auto lg:block relative px-[12px] py-[16px]  h-[468px] bg-white shadow-xl rounded-[10px]">
                     <p class="px-[14px] text-[21px] font-semibold mb-[19px]">Request Mail</p>
+                    @foreach ($NewNotification as $Data)
                     <div class=" h-[64px] hover:bg-gray-300 rounded-[6px]">
                         <div class="flex flex-row items-center w-full h-full gap-x-2 px-[18px] py-[12px]">
                             <div class="w-[40px] rounded-full overflow-hidden">
-                                <img class="w-full h-full" src="DefaultDatas\BeasiswaInstansi\DefaultProfiles.jpg">
+                                <img class="w-full h-full" src="\storage\{{ $Data->Mahasiswa->foto_mahasiswa }}">
                             </div>
                             <div class="flex flex-col justify-center">
-                                <p class="text-[13px] font-semibold">Bank BCA Jember</p>
-                                <p class="text-[10px]">Ingin Mengajukan Beasiswa Ke lobi Poliwangi</p>
+                                <p class="text-[13px] font-semibold">{{ $Data->Mahasiswa->nama_mahasiswa }}</p>
+                                <p class="text-[10px]">Ingin Mengajukan Pengajuan Prestasi Ke lobi Poliwangi</p>
                             </div>
                         </div>
                     </div>
+                    @endforeach
                     <a href="/notification-request">
                         <button
                             class="text-[#3052CC] hover:bg-[#3052CC] hover:text-white text-[13px] font-semibold absolute bottom-5 right-5 left-5 border-2 border-[#3052CC] px-[80px] py-[7px] rounded-[3px]">

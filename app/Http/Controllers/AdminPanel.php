@@ -19,6 +19,7 @@ class AdminPanel extends Controller
     public function directToDashboard (Request $request) {
         $HighlighBeasiswa = Beasiswa::with('Instansi')->orderBy('created_at', 'desc')->take(1)->get();
         $HighlighLomba = Lomba::with('Instansi')->orderBy('created_at', 'desc')->take(2)->get();
+        $NewNotification = RequestPrestasi::with('Mahasiswa')->orderBy('created_at', 'desc')->take(4)->get();
 
         $HighlighBeasiswa->each(function ($HighlighBeasiswa) {
             $HighlighBeasiswa->foto = $HighlighBeasiswa->foto_beasiswa;
@@ -52,6 +53,7 @@ class AdminPanel extends Controller
 
         return view('admin.dashboardadmin', [
             'RecentNew' => $MergeData,
+            'NewNotification' => $NewNotification,
             'Nonaktif' => $MergeDataNonaktif
         ]);
     }
@@ -104,8 +106,16 @@ class AdminPanel extends Controller
 
         $DataRequest->delete();
 
-        session()->flash('Success', 'Data Prestasi Telah Di Tambahkan');
+        session()->flash('Success', 'Data Prestasi Telah Di Inputkan');
 
+        return redirect(route('Dashboard.Notification'));
+    }
+
+    public function RejectRequest (Request $request) {
+        $DataRequest = RequestPrestasi::with('Mahasiswa')->find($request->IdRequest, 'id')->first();
+        Storage::delete($DataRequest->foto_bukti_prestasi);
+        $DataRequest->delete();
+        session()->flash('Success', 'Data Pengajuan Prestasi Telah Di Tolak');
         return redirect(route('Dashboard.Notification'));
     }
 }
