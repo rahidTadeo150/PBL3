@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -16,6 +17,10 @@ class Prestasi extends Model
 
     public function setNamaPerlombaanAttribute($value) {
         $this->attributes['nama_perlombaan'] = ucwords(strtolower($value));
+    }
+
+    public function getTanggalPerlombaanAttribute($value) {
+        return Carbon::parse($value)->format('d-m-Y');
     }
 
     public function MahasiswaPrestasi() {

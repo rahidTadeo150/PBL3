@@ -10,7 +10,7 @@
     <div
         class="container relative grid-cols-1 gap-4 p-5 px-8 mx-auto lg:gap-10 lg:grid lg:grid-cols-2 lg:items-start lg:justify-start ">
         <div class="rounded-[10px] overflow-hidden">
-            <img class="object-cover w-full h-full" src="\storage{{ $Data->foto_beasiswa }}">
+            <img class="object-cover w-full h-full" src="\storage\{{ $Data->foto_beasiswa }}">
         </div>
         <div class="mt-4">
             <div class="w-fit text-[13px] text-white font-medium py-[2px] px-[25px] bg-[#2F39FF] rounded-full mb-[10px]">
@@ -19,7 +19,7 @@
             <p class="text-[28px] font-bold mb-[14px]">{{ $Data->nama_beasiswa }}</p>
             <div class="flex flex-row gap-x-[15px] items-center mb-[20px]">
                 <div class="w-[45px] h-[45px] rounded-full overflow-hidden">
-                    <img src="\storage{{ $Data->Instansi->foto_profile }}">
+                    <img src="\storage\{{ $Data->Instansi->foto_profile }}">
                 </div>
                 <div class="text-[12px]">
                     <p class="font-medium">{{ $Data->Instansi->nama_instansi }}</p>

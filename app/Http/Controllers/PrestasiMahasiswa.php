@@ -8,8 +8,11 @@ use App\Models\Mahasiswa;
 use App\Models\MahasiswaPrestasi;
 use App\Models\Prestasi;
 use App\Models\Tingkatan;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class PrestasiMahasiswa extends Controller
 {
@@ -208,5 +211,17 @@ class PrestasiMahasiswa extends Controller
 
         session()->flash('Success', 'Data Prestasi Telah Di Kembalikan');
         return redirect(route('Prestasi.Index'));
+    }
+
+    public function PrintPDF(Request $request)
+    {
+        // Parshing Date to DateTime
+        $StartDate = Carbon::parse($request->StartDate)->startOfDay();
+        $EndDate = Carbon::parse($request->EndDate)->endOfDay();
+
+        //Finding By Created At
+        $Data = MahasiswaPrestasi::with('Mahasiswa')->whereBetween('created_at', [$StartDate, $EndDate])->get();
+        $pdf = Pdf::loadView('\TemplatePDF\viewpdfmahasiswa', ['data' => $Data]);
+        return $pdf->stream('Data Lampiran Mahasiswa.pdf');
     }
 }

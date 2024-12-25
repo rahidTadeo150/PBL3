@@ -2,8 +2,8 @@
 
 @section('Content')
     <p class="text-2xl font-semibold">Index History Data</p>
-    <p class="text-sm text-gray-700 font-normal">Daftar beasiswa yang telah Terhapus</p>
-    <div class="w-full border-b-2 border-b-gray-700 mt-6 mb-8"></div>
+    <p class="text-sm font-normal text-gray-700">Daftar beasiswa yang telah Terhapus</p>
+    <div class="w-full mt-6 mb-8 border-b-2 border-b-gray-700"></div>
     <a href="{{ route('Instansi.Selection', ['Beasiswa' => 'true']) }}">
         <button class=" flex flex-row gap-x-2 items-center py-[10px] px-[20px] bg-[#21CF11] mb-8 rounded">
             <i class="w-[20px] h-[20px] text-white" data-feather="plus"></i>
@@ -19,16 +19,16 @@
                     <input class="focus:outline-none bg-transparent w-[350px] py-[9px] text-[14px]" type="search">
                 </div>
                 <div class="relative bg-[#3A3838] px-[15px] w-[140px] h-[41px] rounded-md">
-                    <div class="w-full h-full flex flex-row justify-between items-center">
+                    <div class="flex flex-row items-center justify-between w-full h-full">
                         <p class="text-white text-[15px]">Filter</p>
                         <i class="w-[20px] h-[20px] text-white" data-feather="chevron-down"></i>
                     </div>
                     <div class="hidden left-0 mt-[10px] py-[10px] px-[10px] w-[180px] bg-white rounded-md absolute z-50">
-                        <ul class="w-full flex flex-col gap-y-3">
-                            <a href="" class="group w-full">
+                        <ul class="flex flex-col w-full gap-y-3">
+                            <a href="" class="w-full group">
                                 <li class="hover:bg-gray-300 px-[5px] rounded-sm text-[15px] py-[5px] w-full">Nama Beasiswa</li>
                             </a>
-                            <a href="" class="group w-full">
+                            <a href="" class="w-full group">
                                 <li class="hover:bg-gray-300 px-[5px] rounded-sm text-[15px] py-[5px] w-full">Nama Instansi</li>
                             </a>
                         </ul>
@@ -55,10 +55,10 @@
             </div>
         </div>
     </div>
-    <p class="text-sm text-slate-800 mb-3">Data Yang Ditemukan : {{ $TotalDatas }}</p>
+    <p class="mb-3 text-sm text-slate-800">Data Yang Ditemukan : {{ $TotalDatas }}</p>
     <div class="relative overflow-x-auto">
-        <table class="w-full text-sm text-left rounded-md rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead class="text-xs uppercase bg-gray-700 text-gray-400">
+        <table class="w-full text-sm text-left text-gray-500 rounded-md rtl:text-right dark:text-gray-400">
+            <thead class="text-xs text-gray-400 uppercase bg-gray-700">
                 <tr>
                     <th scope="col" class="px-6 py-3 font-semibold">
                         Foto Brosur
@@ -80,9 +80,9 @@
             <tbody>
                 @if (!empty($Datas[0]))
                 @foreach ($Datas as $Beasiswa)
-                <tr class="border-b bg-gray-800 border-gray-700 hover:bg-gray-600">
+                <tr class="bg-gray-800 border-b border-gray-700 hover:bg-gray-600">
                     <th scope="row" class="px-6 py-4 text-sm font-normal text-gray-700 dark:text-white">
-                        <img src="\storage{{ $Beasiswa->foto_beasiswa }}" class="w-20 h-20 rounded">
+                        <img src="\storage\{{ $Beasiswa->foto_beasiswa }}" class="w-20 h-20 rounded">
                     </th>
                     <td class="px-6 py-4 text-sm font-normal text-white">
                         {{ $Beasiswa->nama_beasiswa }}
@@ -93,14 +93,14 @@
                     <td class="px-6 py-4 text-sm font-normal text-white">
                         {{ $Beasiswa->tanggal_penutupan }}
                     </td>
-                    <td class="px-6 py-4 text-sm font-normal text-white text-center">
+                    <td class="px-6 py-4 text-sm font-normal text-center text-white">
                         <a href="{{ route('Beasiswa.Restore', ['IdBeasiswa' => $Beasiswa->id]) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Restore</a>
                     </td>
                 </tr>
                 @endforeach
                 @else
                 <tr>
-                    <td colspan="5" class="text-center text-black py-6">Data Tidak Tersedia</td>
+                    <td colspan="5" class="py-6 text-center text-black">Data Tidak Tersedia</td>
                 </tr>
                 @endif
             </tbody>
