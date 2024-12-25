@@ -46,6 +46,24 @@ export default {
                     transform: 'scale(1.8, 1.8)',
                 }
             },
+
+            // Animation Effect
+            FadeIn: {
+                '0%': {
+                    opacity: '0',
+                },
+                '100%': {
+                    opacity: '1',
+                }
+            },
+            FadeOut: {
+                '0%': {
+                    opacity: '1',
+                },
+                '100%': {
+                    opacity: '0',
+                }
+            },
         },
         animation: {
             ShowContentCarousel: 'ShowContentCarousel 2s ease-in-out forwards',

@@ -45,7 +45,7 @@
 </div>
 @endif --}}
 <div class="relative overflow-x-auto">
-    <table class="w-full text-sm text-left rounded-md rtl:text-right text-gray-500 dark:text-gray-400">
+    <table class="w-full text-sm text-left rounded-md rtl:text-right text-gray-500">
         <thead class="text-xs uppercase bg-gray-700 text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3 font-semibold">

@@ -31,6 +31,7 @@ Route::middleware('MahasiswaLogedIn')->group(function () {
     Route::get('/lihat-lomba', [WebsitePanel::class, 'DetailLomba'])->name('Website.Lomba.Detail');
 });
 
+// Admin Route
 Route::middleware('AdminLogedIn')->group(function () {
     Route::get('/test-dashboard-admin', function () {
         return view('admin.test');
@@ -38,11 +39,13 @@ Route::middleware('AdminLogedIn')->group(function () {
 
     Route::post('/logout-account', [AuthorizationAdmin::class, 'logout'])->name('AdminLogin.Logout');
 
+    // Dashboaard Route
     Route::get('/dashboard-admin', [AdminPanel::class, 'directToDashboard'])->name('Dashboard.Index');
     Route::get('/notification-request', [AdminPanel::class, 'directToIndexNotification'])->name('Dashboard.Notification');
     Route::get('/detail-notification', [AdminPanel::class, 'directToDetailNotification'])->name('Dashboard.Notification.Detail');
     Route::post('/accept-request', [AdminPanel::class, 'AcceptRequest'])->name('Dashboard.AcceptRequest');
 
+    // Beasiswa Route
     Route::get('/index-beasiswa', [Beasiswa::class, 'directToIndexBeasiswa'])->name('Beasiswa.Index');
     Route::get('/detail-beasiswa', [Beasiswa::class, 'directToDetailBeasiswa'])->name('Beasiswa.Detail');
     Route::get('/index-history-beasiswa', [Beasiswa::class, 'directToIndexHistoryBeasiswa'])->name('Beasiswa.History.Index');
@@ -53,6 +56,7 @@ Route::middleware('AdminLogedIn')->group(function () {
     Route::put('/updating-data-beasiswa', [Beasiswa::class, 'UpdateBeasiswa'])->name('Beasiswa.Update');
     Route::get('/restoring-data-beasiswa', [Beasiswa::class, 'RestoreBeasiswa'])->name('Beasiswa.Restore');
 
+    // Instansi Route
     Route::get('/select-instansi', [Instansi::class, 'SelectionInstansiBeasiswa'])->name('Instansi.Selection');
     Route::get('/index-instansi', [Instansi::class, 'directToIndex'])->name('Instansi.Index');
     Route::get('/form-instansi', [Instansi::class, 'directToCreateInstansiBeasiswa'])->name('Instansi.Create');
@@ -60,6 +64,7 @@ Route::middleware('AdminLogedIn')->group(function () {
     Route::get('/edit-instansi', [Instansi::class, 'EditInstansi'])->name('Instansi.Edit');
     Route::delete('/delete-instansi', [Instansi::class, 'DeleteInstansi'])->name('Instansi.Delete');
 
+    // Lomba Route
     Route::get('/index-lomba', [Lomba::class, 'directToIndexLomba'])->name('Lomba.Index');
     Route::get('/index-history-lomba', [Lomba::class, 'directToIndexHistoryLomba'])->name('Lomba.HistoryData');
     Route::get('/form-tambah-lomba', [Lomba::class, 'directToCreateLomba'])->name('Lomba.Create');
@@ -70,6 +75,7 @@ Route::middleware('AdminLogedIn')->group(function () {
     Route::delete('/delete-data-lomba', [Lomba::class, 'DeleteLomba'])->name('Lomba.Delete');
     Route::get('/restoring-data-lomba', [Lomba::class, 'RestoreLomba'])->name('Lomba.Restore');
 
+    // Prestasi Route
     Route::get('/index-prestasi', [PrestasiMahasiswa::class, 'directToIndexPrestasi'])->name('Prestasi.Index');
     Route::get('/index-history-prestasi', [PrestasiMahasiswa::class, 'directToIndexHistoryPrestasi'])->name('Prestasi.History');
     Route::get('/select-mahasiswa', [PrestasiMahasiswa::class, 'SelectionMahasiswa'])->name('Prestasi.MahasiswaSelect');
@@ -79,6 +85,9 @@ Route::middleware('AdminLogedIn')->group(function () {
     Route::get('/edit-data-prestasi', [PrestasiMahasiswa::class, 'EditPrestasi'])->name('Prestasi.Edit');
     Route::put('/updating-data-prestasi', [PrestasiMahasiswa::class, 'UpdatePrestasi'])->name('Prestasi.Update');
     Route::post('/updating-data-prestasi', [PrestasiMahasiswa::class, 'RestorePrestasi'])->name('Prestasi.Restore');
+
+    // Cetak PDF Prestasi
+    Route::get('/print-pdf-file', [PrestasiMahasiswa::class, 'PrintPDF'])->name('Prestasi.CetakPDF');
 
     Route::get('/detail-event', [AdminPanel::class, 'directToDetailEvent'])->name('DetailEvent');
 });

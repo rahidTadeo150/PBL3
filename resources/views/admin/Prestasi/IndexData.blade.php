@@ -4,41 +4,42 @@
     @if (Session('Success'))
     @include('Modal.SuccessModalCRUD')
     @endif
-    {{-- <div class="absolute inset-x-0 inset-y-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-        <div class="bg-white absolute z-[51] w-[500px] h-fit py-[8px] rounded-[5px] px-[10px] flex flex-col gap-y-[10px]">
+    {{-- Modul Card PDF --}}
+    <div id="ModulDateLayer" class="absolute inset-x-0 inset-y-0 z-50 items-center justify-center hidden bg-black bg-opacity-50 animate-[FadeIn_0.2s_ease-in_forwards]">
+        <div id="ModulDatePDF" class="bg-white absolute z-[51] w-[550px] h-fit py-[8px] rounded-[5px] px-[10px] hidden flex-col gap-y-[10px] animate-[FadeIn_0.2s_ease-in_forwards]">
+            {{-- Content Card --}}
             <div class="flex flex-col items-end w-full">
-                <i class="w-[16px]" data-feather="x"></i>
+                <div id="ClosePDF" class="cursor-pointer">
+                    <i class="w-[16px]" data-feather="x"></i>
+                </div>
             </div>
-            <div class="grid w-full grid-rows-2 place-items-center">
+            {{-- Form Date PDF --}}
+            <form action="{{ route('Prestasi.CetakPDF') }}" method="get" class="grid w-full gap-y-[5px] grid-rows-2 place-items-center">
+                @csrf
                 <div>
                     <p class="w-full text-[15px] font-medium text-center mb-[40px]">Masukan Range Tanggal Prestasi Yang Ingin di cetak</p>
                     <div class="flex flex-col items-center w-full">
                         <div class="grid w-11/12 grid-cols-7 place-items-center">
                             <div class="relative z-0 w-full col-span-3">
-                                <input name="TanggalPerlombaan" value="{{ old('TanggalPerlombaan') }}" autocomplete="off" type="date" id="floating_standard" class="block py-1 px-0 w-full text-[13px] text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" />
+                                <input name="StartDate" autocomplete="off" type="date" id="floating_standard" class="block py-1 px-0 w-full text-[13px] text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" required/>
                                 <label for="floating_standard" class="absolute text-[14px] text-gray-900 duration-300 transform -translate-y-7 scale-75 top-2 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-[30px] rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">From Date</label>
-                                @error ('TanggalPerlombaan')
-                                    <p class="text-[12px] text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span>{{ $message }}</p>
-                                @enderror
                             </div>
                             <p class="w-fit text-[11px] font-medium">To</p>
                             <div class="relative z-0 w-full col-span-3">
-                                <input name="TanggalPerlombaan" value="{{ old('TanggalPerlombaan') }}" autocomplete="off" type="date" id="floating_standard" class="block py-1 px-0 w-full text-[13px] text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" />
-                                <label for="floating_standard" class="absolute text-[14px] text-gray-900 duration-300 transform -translate-y-7 scale-75 top-2 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-[30px] rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">End Date</label>
-                                @error ('TanggalPerlombaan')
-                                    <p class="text-[12px] text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span>{{ $message }}</p>
-                                @enderror
+                                    <input name="EndDate" autocomplete="off" type="date" id="floating_standard" class="block py-1 px-0 w-full text-[13px] text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"/>
+                                    <label for="floating_standard" class="absolute text-[14px] text-gray-900 duration-300 transform -translate-y-7 scale-75 top-2 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-[30px] rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">End Date</label>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button class="w-3/6 bg-green-500 py-[10px] text-[13px] text-white row-span-2 flex flex-row justify-center items-center leading-none gap-x-[10px]">
-                    <i data-feather="printer"></i>
-                    <p class="">Generate PDF</p>
+                {{-- Tombol Generate PDF --}}
+                <button type="submit" class="w-3/6 rounded-[3px] bg-green-500 py-[10px] text-[13px] text-white row-span-2 flex flex-row justify-center items-center leading-none gap-x-[10px]">
+                    <i class="w-[18px] h-[18px]" data-feather="printer"></i>
+                    <p class="text-[12px]">Generate PDF</p>
                 </button>
-            </div>
+            </form>
         </div>
-    </div> --}}
+    </div>
     <p class="text-2xl font-semibold">Index Data Prestasi</p>
     <p class="text-sm font-normal text-gray-700">Daftar Prestasi Mahasiswa yang telah terdaftar di Lobi Poliwangi</p>
     <div class="w-full mt-6 mb-8 border-b-2 border-b-gray-700"></div>
@@ -73,12 +74,15 @@
             </div>
         </form>
         <div class="flex flex-row gap-x-3">
+
+            {{-- Button Cetak PDF --}}
             <div>
-                <button class="flex flex-row items-center justify-center gap-x-3 w-fit h-[41px] px-3 bg-blue-600 rounded-md">
+                <button id="ButtonPDF" class="cursor-pointer flex flex-row items-center justify-center gap-x-3 w-fit h-[41px] px-3 bg-blue-600 rounded-md">
                         <i class="w-[20px] h-[20px] text-white" data-feather="printer"></i>
                         <p class="text-sm text-gray-50">Cetak PDF</p>
                 </button>
             </div>
+
             <div>
                 <a href="{{ route('Prestasi.History') }}">
                     <button class="flex flex-row items-center justify-center gap-x-3 w-fit h-[41px] px-3 bg-black rounded-md">
@@ -164,5 +168,6 @@
     </div>
     <script src="\JavascriptDevelp\DropdownFilter.js"></script>
     <script src="\JavascriptDevelp\CloseModal.js"></script>
+    <script src="\JavascriptDevelp\ModulCardDatePDF.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 @endsection
