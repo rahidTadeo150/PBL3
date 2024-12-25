@@ -124,7 +124,7 @@
                 <tr class="bg-gray-800 border-b border-gray-700 hover:bg-gray-600">
                     <th scope="row" class="px-10 py-4 text-sm font-normal text-white">
                         <div class="w-[55px] h-[55px] overflow-hidden rounded-full">
-                            <img src="/storage{{ $Prestasi->Mahasiswa->foto_mahasiswa }}" class="w-full h-full">
+                            <img src="/storage/{{ $Prestasi->Mahasiswa->foto_mahasiswa }}" class="w-full h-full">
                         </div>
                     </th>
                     <td class="px-6 py-4 text-sm font-normal text-white">

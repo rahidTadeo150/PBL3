@@ -48,7 +48,7 @@ class DatabaseSeeder extends Seeder
             'no_telephone' => '08118414000',
             'alamat' => 'Jalan Doktor Wahidin Sudiro Husodo No.2, Kepatihan, Kec. Banyuwangi, Kabupaten Banyuwangi',
             'email' => 'mandiricare@mandiri.co.id',
-            'foto_profile' => '\Instansi\MandiriProfile.png',
+            'foto_profile' => 'Instansi\MandiriProfile.png',
             'account_admin_id' => 1,
         ]);
         dbBeasiswa::create([
@@ -58,7 +58,7 @@ class DatabaseSeeder extends Seeder
             'persyaratan' => 'Bebas Tanpa Di Pungut Biaya',
             'tanggal_pendaftaran' => '2024-05-10',
             'tanggal_penutupan' => '2024-05-20',
-            'foto_beasiswa' => '\Beasiswa\14a-01.03.2023.14.51.50.jpg',
+            'foto_beasiswa' => 'Beasiswa\14a-01.03.2023.14.51.50.jpg',
             'tingkatan_id' => 1,
             'status_id' => 1,
             'admin_id' => 1,
@@ -70,7 +70,7 @@ class DatabaseSeeder extends Seeder
             'persyaratan' => 'Bebas Tanpa Di Pungut Biaya',
             'tanggal_pendaftaran' => '2024-05-10',
             'tanggal_penutupan' => '2024-05-20',
-            'foto_beasiswa' => '\Beasiswa\b9cc4a75e436b2dff5dfbbe27ecdeab6.jpg',
+            'foto_beasiswa' => 'Beasiswa\b9cc4a75e436b2dff5dfbbe27ecdeab6.jpg',
             'tingkatan_id' => 1,
             'status_id' => 1,
             'admin_id' => 1,
@@ -82,7 +82,7 @@ class DatabaseSeeder extends Seeder
             'persyaratan' => 'Bebas Tanpa Di Pungut Biaya',
             'tanggal_pendaftaran' => '2024-05-10',
             'tanggal_penutupan' => '2024-05-20',
-            'foto_beasiswa' => '\Beasiswa\bea1.jpg',
+            'foto_beasiswa' => 'Beasiswa\bea1.jpg',
             'tingkatan_id' => 1,
             'status_id' => 1,
             'admin_id' => 1,
@@ -94,7 +94,7 @@ class DatabaseSeeder extends Seeder
             'persyaratan' => 'Bebas Tanpa Di Pungut Biaya',
             'tanggal_pendaftaran' => '2024-05-10',
             'tanggal_penutupan' => '2024-05-20',
-            'foto_beasiswa' => '\Beasiswa\IMG-20220315-WA0096.jpg',
+            'foto_beasiswa' => 'Beasiswa\IMG-20220315-WA0096.jpg',
             'tingkatan_id' => 1,
             'status_id' => 1,
             'admin_id' => 1,
@@ -106,7 +106,7 @@ class DatabaseSeeder extends Seeder
             'persyaratan' => 'Bebas Tanpa Di Pungut Biaya',
             'tanggal_pendaftaran' => '2024-05-10',
             'tanggal_penutupan' => '2024-05-20',
-            'foto_beasiswa' => '\Beasiswa\poster-beasiswa-s1-online-scholarship-competition-osc.jpg',
+            'foto_beasiswa' => 'Beasiswa\poster-beasiswa-s1-online-scholarship-competition-osc.jpg',
             'tingkatan_id' => 1,
             'status_id' => 1,
             'admin_id' => 1,
@@ -118,7 +118,7 @@ class DatabaseSeeder extends Seeder
             'persyaratan' => 'Bebas Tanpa Di Pungut Biaya',
             'tanggal_pendaftaran' => '2024-05-10',
             'tanggal_penutupan' => '2024-05-20',
-            'foto_lomba' => '\Lomba\Turnamen-2021-Mercu-Buana-Mobile-Lengend-894x1264.jpg',
+            'foto_lomba' => 'Lomba\Turnamen-2021-Mercu-Buana-Mobile-Lengend-894x1264.jpg',
             'tingkatan_id' => 1,
             'status_id' => 1,
             'admin_id' => 1,
@@ -130,7 +130,7 @@ class DatabaseSeeder extends Seeder
             'persyaratan' => 'Bebas Tanpa Di Pungut Biaya',
             'tanggal_pendaftaran' => '2024-05-10',
             'tanggal_penutupan' => '2024-05-20',
-            'foto_lomba' => '\Lomba\20180731032204-5-0-Pamflet_Lomba_Riset_2018.jpeg',
+            'foto_lomba' => 'Lomba\20180731032204-5-0-Pamflet_Lomba_Riset_2018.jpeg',
             'tingkatan_id' => 1,
             'status_id' => 1,
             'admin_id' => 1,
@@ -142,7 +142,7 @@ class DatabaseSeeder extends Seeder
             'persyaratan' => 'Bebas Tanpa Di Pungut Biaya',
             'tanggal_pendaftaran' => '2024-05-10',
             'tanggal_penutupan' => '2024-05-20',
-            'foto_lomba' => '\Lomba\19008c5f005e2da98b70a7ddd430aee2.jpg',
+            'foto_lomba' => 'Lomba\19008c5f005e2da98b70a7ddd430aee2.jpg',
             'tingkatan_id' => 1,
             'status_id' => 1,
             'admin_id' => 1,
@@ -154,7 +154,7 @@ class DatabaseSeeder extends Seeder
             'persyaratan' => 'Bebas Tanpa Di Pungut Biaya',
             'tanggal_pendaftaran' => '2024-05-10',
             'tanggal_penutupan' => '2024-05-20',
-            'foto_lomba' => '\Lomba\E2rliE_VUAcykNM.jpg',
+            'foto_lomba' => 'Lomba\E2rliE_VUAcykNM.jpg',
             'tingkatan_id' => 1,
             'status_id' => 1,
             'admin_id' => 1,
@@ -263,7 +263,7 @@ class DatabaseSeeder extends Seeder
         mahasiswa::create([
             'nim' => '3622583187',
             'nama_mahasiswa' => 'Rizki Firmansyah',
-            'foto_mahasiswa' => '\Mahasiswa\mahasiswa1.jpg',
+            'foto_mahasiswa' => 'Mahasiswa\mahasiswa1.jpg',
             'password' => '3622583180',
             'prodi_id' => 2
         ]);
@@ -271,7 +271,7 @@ class DatabaseSeeder extends Seeder
         mahasiswa::create([
             'nim' => '3622583198',
             'nama_mahasiswa' => 'Ilham Malana',
-            'foto_mahasiswa' => '\Mahasiswa\mahasiswa2.jpg',
+            'foto_mahasiswa' => 'Mahasiswa\mahasiswa2.jpg',
             'password' => '3622583190',
             'prodi_id' => 5,
         ]);
@@ -279,7 +279,7 @@ class DatabaseSeeder extends Seeder
         mahasiswa::create([
             'nim' => '3622583244',
             'nama_mahasiswa' => 'Andika Subiantoro',
-            'foto_mahasiswa' => '\Mahasiswa\mahasiswa3.jpg',
+            'foto_mahasiswa' => 'Mahasiswa\mahasiswa3.jpg',
             'password' => '3622583240',
             'prodi_id' => 6,
         ]);
@@ -294,7 +294,7 @@ class DatabaseSeeder extends Seeder
 
         Prestasi::create([
             'nama_perlombaan' => 'Lomba Aitec 2024',
-            'foto_bukti_prestasi' => '/Prestasi/47103-timnas-indonesia-juara-easian-cup-2023.jpg',
+            'foto_bukti_prestasi' => 'Prestasi/47103-timnas-indonesia-juara-easian-cup-2023.jpg',
             'tingkatan_id' => 2,
             'tanggal_perlombaan' => '2024-05-10',
             'category_prestasi_id' => 2,

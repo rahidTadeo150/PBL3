@@ -6,11 +6,11 @@
         @include('Modal.SuccessModalCRUD')
         @endif
         <p class="text-2xl font-semibold">Edit Mahasiswa Berprestasi</p>
-        <p class="text-sm text-gray-700 font-normal">Form Edit Data Mahasiswa Berprestasi Lobi Poliwangi</p>
-        <div class="w-full border-b-2 border-b-gray-700 mt-6 mb-14"></div>
+        <p class="text-sm font-normal text-gray-700">Form Edit Data Mahasiswa Berprestasi Lobi Poliwangi</p>
+        <div class="w-full mt-6 border-b-2 border-b-gray-700 mb-14"></div>
         <p class="text-[14px] font-semibold">Step 1: Input Mahasiswa</p>
         <p class="mb-5 text-[12px]">Berikut Detail Mahasiswa Poliwangi Yang Anda Inputkan Untuk Data Prestasi ini</p>
-        <div class="mb-16 max-w-sm min-w-full px-6 py-5 pt-7 bg-white rounded-lg shadow border-l-8 border-l-sky-400 border border-gray-200">
+        <div class="max-w-sm min-w-full px-6 py-5 mb-16 bg-white border border-l-8 border-gray-200 rounded-lg shadow pt-7 border-l-sky-400">
             <div class="flex flex-row items-center gap-x-5">
                 <div class="w-[60px] h-[60px] bg-black rounded-full overflow-hidden">
                     <img class="w-full h-full" src="\storage\{{ $DataMahasiswa->foto_mahasiswa }}">
@@ -33,12 +33,12 @@
                 @method('put')
                 <p class="text-[14px] font-semibold">Step 2: Detail Prestasi Yang Akan Di Publish</p>
                 <p class="mb-10 text-[12px]">Harap Memasukan Detail Data dengan Teliti dan Benar Pada Saat Penginputan!</p>
-                <div class="flex flex-row justify-between items-center px-5">
+                <div class="flex flex-row items-center justify-between px-5">
                     <div>
                         <input type="hidden" name="IdMahasiswa" value="{{  $Data->Mahasiswa->id }}">
                         <input type="hidden" name="IdPrestasi" value="{{ $Data->Prestasi->id }}">
                         <input type="hidden" name="IdEdit" value="{{ $Data->id }}">
-                        <div class="relative z-0 w-96 mb-5">
+                        <div class="relative z-0 mb-5 w-96">
                             <input name="NamaPerlombaan" value="{{ $Data->Prestasi->nama_perlombaan }}" autocomplete="off" type="text" id="floating_standard" class="mb-[5px] block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" />
                             <label for="floating_standard" class="absolute text-sm text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Nama Perlombaan</label>
                             @error ('NamaPerlombaan')
@@ -64,7 +64,7 @@
                             <select name="CategoryPerlombaan" autocomplete="off" type="date" id="floating_standard" class="mb-[5px] block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
                                 <option value=""> - Pilih Kategori Perlombaan - </option>
                                 @foreach ($Category as $Category)
-                                <option value="{{ $Category->id }}" class="text-sm font-normal pl-2 pr-2" {{ $Data->Prestasi->category_prestasi_id == $Category->id ? 'selected' : '' }}>{{ $Category->category }}</option>
+                                <option value="{{ $Category->id }}" class="pl-2 pr-2 text-sm font-normal" {{ $Data->Prestasi->category_prestasi_id == $Category->id ? 'selected' : '' }}>{{ $Category->category }}</option>
                                 @endforeach
                             </select>
                             @error ('CategoryPerlombaan')
@@ -76,7 +76,7 @@
                             <select name="Tingkatan" autocomplete="off" type="date" id="floating_standard" class="mb-[5px] block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
                                 <option value=""> - Pilih Tingkatan Perlombaan - </option>
                                 @foreach ($Tingkatan as $Tingkatan)
-                                <option value="{{ $Tingkatan->id }}" class="text-sm font-normal pl-2 pr-2" {{ $Data->Prestasi->tingkatan_id == $Tingkatan->id ? 'selected' : '' }}>{{ $Tingkatan->tingkatan }}</option>
+                                <option value="{{ $Tingkatan->id }}" class="pl-2 pr-2 text-sm font-normal" {{ $Data->Prestasi->tingkatan_id == $Tingkatan->id ? 'selected' : '' }}>{{ $Tingkatan->tingkatan }}</option>
                                 @endforeach
                             </select>
                             @error ('Tingkatan')
@@ -86,10 +86,10 @@
                         </div>
                         <div class="flex mt-14">
                             <div class="flex items-center h-5">
-                                <input id="SubmitCheckbox" onclick="SubmitEnabled()" type="checkbox" class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded mt-4 outline-0" required>
+                                <input id="SubmitCheckbox" onclick="SubmitEnabled()" type="checkbox" class="w-5 h-5 mt-4 text-blue-600 bg-gray-100 border-gray-300 rounded outline-0" required>
                             </div>
-                            <div class="ms-4 text-sm">
-                                <label for="helper-checkbox" class="font-bold text-base text-gray-900">Harap Cek lagi Kevalidan Data</label>
+                            <div class="text-sm ms-4">
+                                <label for="helper-checkbox" class="text-base font-bold text-gray-900">Harap Cek lagi Kevalidan Data</label>
                                 <p id="helper-checkbox-text" class="text-sm font-normal text-gray-500">Pastikan Data Valid Dan Benar Sebelum di Post </p>
                             </div>
                         </div>
@@ -97,8 +97,8 @@
                     <div class="flex flex-col items-center gap-y-2">
                         <p class="text-black font-semibold text-[20px]">Upload Dokumentasi Prestasi</p>
                         <div class="flex flex-col overflow-hidden justify-center items-center relative w-[330px] h-[330px] border-2 border-dashed rounded-md border-black">
-                            <img id="ImagePreview" class="absolute z-50 bg-contain h-full w-full hidden" src="">
-                            <img class="absolute z-10 bg-contain h-full w-full" src="\storage\{{ $Data->Prestasi->foto_bukti_prestasi }}">
+                            <img id="ImagePreview" class="absolute z-50 hidden w-full h-full bg-contain" src="">
+                            <img class="absolute z-10 w-full h-full bg-contain" src="\storage\{{ $Data->Prestasi->foto_bukti_prestasi }}">
                         </div>
                         <p class="font-medium text-[12px]">File Size: <span id="DescSize">0</span> MB</p>
                         @error('FotoPrestasi')
@@ -107,19 +107,19 @@
                             </p>
                         @enderror
                         <label for="FotoInput" class="cursor-pointer w-[250px] h-[38px] bg-[#58D42B] flex flex-col items-center justify-center rounded">
-                            <p class="text-white font-semibold">Browse File</p>
+                            <p class="font-semibold text-white">Browse File</p>
                         </label>
                         <input class="hidden" type="file" name="FotoPrestasi" id="FotoInput">
                     </div>
                 </div>
                 <div class="flex flex-row">
-                    <a href="{{ route('Prestasi.Index') }}" type="submit" class="p-3 pl-8 pr-8 bg-slate-400 mt-10 mb-10 w-fit rounded-md">
-                        <p class="text-gray-900 text-md font-semibold">Cancel</p>
+                    <a href="{{ route('Prestasi.Index') }}" type="submit" class="p-3 pl-8 pr-8 mt-10 mb-10 rounded-md bg-slate-400 w-fit">
+                        <p class="font-semibold text-gray-900 text-md">Cancel</p>
                     </a>
-                    <button id="SubmitButton" onclick="confirm('Ingin Menyimpan Instansi Ini')" type="submit" class="disabled-submit-button ml-5 p-3 pl-8 pr-8 mt-10 mb-10 w-96 rounded-md" disabled>
-                        <div class="flex flex-row justify-center items-center w-full h-full gap-x-2">
+                    <button id="SubmitButton" onclick="confirm('Ingin Menyimpan Instansi Ini')" type="submit" class="p-3 pl-8 pr-8 mt-10 mb-10 ml-5 rounded-md disabled-submit-button w-96" disabled>
+                        <div class="flex flex-row items-center justify-center w-full h-full gap-x-2">
                             <i class="w-[20px] h-[20px] text-white" data-feather="file-plus"></i>
-                            <p class="text-gray-100 font-semibold">Simpan Prestasi</p>
+                            <p class="font-semibold text-gray-100">Simpan Prestasi</p>
                         </div>
                     </button>
                 </div>

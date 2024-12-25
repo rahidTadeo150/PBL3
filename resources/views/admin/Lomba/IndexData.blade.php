@@ -5,8 +5,8 @@
     @include('Modal.SuccessModalCRUD')
     @endif
     <p class="text-2xl font-semibold">Index Data Lomba</p>
-    <p class="text-sm text-gray-700 font-normal">Daftar Lomba yang telah terposting</p>
-    <div class="w-full border-b-2 border-b-gray-700 mt-6 mb-8"></div>
+    <p class="text-sm font-normal text-gray-700">Daftar Lomba yang telah terposting</p>
+    <div class="w-full mt-6 mb-8 border-b-2 border-b-gray-700"></div>
     <a href="{{ route('Instansi.Selection',['Lomba' => 'true']) }}">
         <button class=" flex flex-row gap-x-2 items-center py-[10px] px-[20px] bg-[#21CF11] mb-8 rounded">
             <i class="w-[20px] h-[20px] text-white" data-feather="plus"></i>
@@ -22,12 +22,12 @@
                     <input name="search" class="focus:outline-none bg-transparent w-[350px] py-[9px] text-[14px]" type="search">
                 </div>
                 <div class="relative bg-[#3A3838] px-[15px] w-[140px] h-[41px] rounded-md">
-                    <div id="ButtonFilter" onclick="ShowDropdown()" class="cursor-pointer w-full h-full flex flex-row justify-between items-center">
+                    <div id="ButtonFilter" onclick="ShowDropdown()" class="flex flex-row items-center justify-between w-full h-full cursor-pointer">
                         <p class="text-white text-[15px]">Filter</p>
                         <i class="w-[20px] h-[20px] text-white" data-feather="chevron-down"></i>
                     </div>
                     <div id="DropdownFilter" class="hidden left-0 mt-[10px] py-[10px] px-[10px] w-[180px] bg-white shadow-xl rounded-md absolute z-50">
-                        <ul class="w-full flex flex-col gap-y-2">
+                        <ul class="flex flex-col w-full gap-y-2">
                             <li id="FilterOption" class="cursor-pointer hover:bg-gray-300 px-[5px] rounded-sm text-[13px] py-[5px] w-full">Nama Perlombaan</li>
                             <li id="FilterOption" class="cursor-pointer hover:bg-gray-300 px-[5px] rounded-sm text-[13px] py-[5px] w-full">Instansi Perlombaan</li>
                             <li id="FilterOption" class="cursor-pointer hover:bg-gray-300 px-[5px] rounded-sm text-[13px] py-[5px] w-full">Link Perlombaan</li>
@@ -56,10 +56,10 @@
             </div>
         </div>
     </div>
-    <p class="text-sm text-slate-800 mb-3">Data Yang Ditemukan : {{ $TotalDatas }}</p>
+    <p class="mb-3 text-sm text-slate-800">Data Yang Ditemukan : {{ $TotalDatas }}</p>
     <div class="relative overflow-x-auto">
-        <table class="w-full text-sm text-left rounded-md text-gray-500 dark:text-gray-400">
-            <thead class="text-xs uppercase bg-gray-700 text-gray-400">
+        <table class="w-full text-sm text-left text-gray-500 rounded-md dark:text-gray-400">
+            <thead class="text-xs text-gray-400 uppercase bg-gray-700">
                 <tr>
                     <th scope="col" class="px-6 py-3 font-semibold">
                         Foto Brosur
@@ -81,9 +81,9 @@
             <tbody>
                 @if (!empty($Datas[0]))
                 @foreach ($Datas as $Lomba)
-                <tr class="border-b bg-gray-800 border-gray-700 hover:bg-gray-600">
+                <tr class="bg-gray-800 border-b border-gray-700 hover:bg-gray-600">
                     <th scope="row" class="px-6 py-4 text-sm font-normal text-white">
-                        <img src="\storage{{ $Lomba->foto_lomba }}" class="w-20 h-20 rounded">
+                        <img src="\storage\{{ $Lomba->foto_lomba }}" class="w-20 h-20 rounded">
                     </th>
                     <td class="px-6 py-4 text-sm font-normal text-white">
                         {{ $Lomba->nama_perlombaan }}
@@ -94,14 +94,14 @@
                     <td class="px-6 py-4 text-sm font-normal text-white">
                         {{ $Lomba->tanggal_penutupan }}
                     </td>
-                    <td class="px-6 py-4 text-sm font-normal text-white text-center">
+                    <td class="px-6 py-4 text-sm font-normal text-center text-white">
                         <a href="/detail-lomba?id={{ $Lomba->id }}" class="font-medium text-blue-500 hover:underline">Preview</a>
                     </td>
                 </tr>
                 @endforeach
                 @else
                 <tr>
-                    <td colspan="5" class="text-center text-black py-6">Data Tidak Tersedia</td>
+                    <td colspan="5" class="py-6 text-center text-black">Data Tidak Tersedia</td>
                 </tr>
                 @endif
             </tbody>
