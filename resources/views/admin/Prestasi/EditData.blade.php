@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="w-full text-end">
-                <a href="{{ route('Prestasi.MahasiswaSelect') }}?ChangesMahasiswa=True&IdPrestasi={{ $DataMahasiswa->id }}" class="text-blue-500 font-medium text-[13px] hover:underline">
+                <a href="{{ route('Prestasi.MahasiswaSelect') }}?ChangesMahasiswa=True&IdPrestasi={{ $Data->id }}" class="text-blue-500 font-medium text-[13px] hover:underline">
                     Ganti Mahasiswa
                 </a>
             </div>
@@ -35,7 +35,7 @@
                 <p class="mb-10 text-[12px]">Harap Memasukan Detail Data dengan Teliti dan Benar Pada Saat Penginputan!</p>
                 <div class="flex flex-row items-center justify-between px-5">
                     <div>
-                        <input type="hidden" name="IdMahasiswa" value="{{  $Data->Mahasiswa->id }}">
+                        <input type="hidden" name="IdMahasiswa" value="{{  $DataMahasiswa->id }}">
                         <input type="hidden" name="IdPrestasi" value="{{ $Data->Prestasi->id }}">
                         <input type="hidden" name="IdEdit" value="{{ $Data->id }}">
                         <div class="relative z-0 mb-5 w-96">
@@ -54,7 +54,7 @@
                             <p class="text-[12px] text-[#274DE3]">* Contoh Pengisian : Juara 2</p>
                         </div>
                         <div class="relative z-0 w-[280px] mb-9">
-                            <input name="TanggalPerlombaan" value="{{ $Data->Prestasi->tanggal_perlombaan }}" autocomplete="off" type="date" id="floating_standard" class="mb-[5px] block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" />
+                            <input name="TanggalPerlombaan" value="{{ $TanggalPerlombaan }}" autocomplete="off" type="date" id="floating_standard" class="mb-[5px] block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" />
                             <label for="floating_standard" class="absolute text-lg text-gray-900 duration-300 transform -translate-y-7 scale-75 top-2 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-9 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Tanggal Perlombaan</label>
                             @error ('TanggalPerlombaan')
                                 <p class="text-[12px] text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span>{{ $message }}</p>

@@ -131,7 +131,9 @@ class PrestasiMahasiswa extends Controller
 
     public function EditPrestasi(Request $request)
     {
-        $DataPrestasi = MahasiswaPrestasi::find($request->IdPrestasi);
+        $DataPrestasi = MahasiswaPrestasi::with('Prestasi')->find($request->IdPrestasi);
+        $CarbonParse = Carbon::createFromFormat('d-m-Y', $DataPrestasi->Prestasi->tanggal_perlombaan)->format('Y-m-d');
+
         if ($request->ChangesMahasiswa) {
             $DataMahasiswa = Mahasiswa::find($request->IdMahasiswa);
         } else {
@@ -141,9 +143,11 @@ class PrestasiMahasiswa extends Controller
         $Tingkatan = Tingkatan::all();
         $CategoryPerlombaan = CategoryPrestasi::all();
 
+
         return view('admin.Prestasi.EditData', [
             'Data' => $DataPrestasi,
             'DataMahasiswa' => $DataMahasiswa,
+            'TanggalPerlombaan' => $CarbonParse,
             'Tingkatan' => $Tingkatan,
             'Category' => $CategoryPerlombaan,
         ]);
@@ -165,10 +169,14 @@ class PrestasiMahasiswa extends Controller
 
         $ValidateData['Administrator'] = auth('Admin')->user()->id;
         $PrestasiPicker = Prestasi::find($ValidateData['IdPrestasi']);
+        $MahasiswaPicker = MahasiswaPrestasi::where('prestasi_id', '=', $PrestasiPicker->id);
         $MahasiswaPrestasiPicker = MahasiswaPrestasi::find($ValidateData['IdEdit']);
 
-        $PrestasiPicker->update([
+        $MahasiswaPicker->update([
             'mahasiswa_id' => $ValidateData['IdMahasiswa'],
+        ]);
+
+        $PrestasiPicker->update([
             'nama_perlombaan' => $ValidateData['NamaPerlombaan'],
             'tanggal_perlombaan' => $ValidateData['TanggalPerlombaan'],
             'tingkatan_id' => $ValidateData['Tingkatan'],
