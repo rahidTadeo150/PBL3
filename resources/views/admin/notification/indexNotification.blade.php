@@ -19,7 +19,7 @@
                         <div>
                             <p class="text-[17px] font-semibold leading-4">{{ $Data->Mahasiswa->nama_mahasiswa }}</p>
                             <p class="text-[10px] font-medium italic">Mahasiswa</p>
-                            <p class="text-[10px] font-medium w-[565px] mt-[9px]">Bank Mandiri Ingin mengajukan prestasi {{ $Data->nama_perlombaan }} ke lobi poliwangi, untuk detail selengkapnya silahkan click pesan ini</p>
+                            <p class="text-[10px] font-medium w-[565px] mt-[9px]">{{ $Data->Mahasiswa->nama_mahasiswa }} Ingin mengajukan prestasi {{ $Data->nama_perlombaan }} ke lobi poliwangi, untuk detail selengkapnya silahkan click pesan ini</p>
                             <p class="text-[10px] mt-[9px]">Dikirim Pada {{ $Data->created_at }}</p>
                         </div>
                     </div>
