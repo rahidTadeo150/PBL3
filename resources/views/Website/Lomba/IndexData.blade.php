@@ -110,7 +110,7 @@
                                 </div>
                                 <div>
                                     <p class="-mb-1 text-sm font-medium">{{ $Data->nama_instansi }}</p>
-                                    <p class="text-xs">Telah Mengajukan {{ $Data->lomba_count }} Beasiswa</p>
+                                    <p class="text-xs">Telah Mengajukan {{ $Data->lomba_count }} Lomba</p>
                                 </div>
                             </div>
                         @endforeach
