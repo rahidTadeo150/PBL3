@@ -62,7 +62,7 @@
                         </div>
                         <div class="relative z-0 w-80 mb-9">
                             <select name="Tingkatan" autocomplete="off" type="date" id="floating_standard" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
-                                <option value="" selected> - Pilih Tingkatan Beasiswa - </option>
+                                <option value="" selected> - Pilih Tingkatan Lomba - </option>
                                 @foreach ($Tingkatan as $Tingkatan)
                                 <option value="{{ $Tingkatan->id }}" class="text-sm font-normal pl-2 pr-2">{{ $Tingkatan->tingkatan }}</option>
                                 @endforeach
