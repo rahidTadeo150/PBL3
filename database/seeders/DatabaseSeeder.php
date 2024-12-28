@@ -11,7 +11,7 @@ use App\Models\Beasiswa as dbBeasiswa;
 use App\Models\CategoryPrestasi;
 use App\Models\Jurusan;
 use App\Models\Lomba;
-use App\Models\mahasiswa;
+use App\Models\Mahasiswa;
 use App\Models\MahasiswaPrestasi;
 use App\Models\Prestasi;
 use App\Models\Prodi;
@@ -260,7 +260,7 @@ class DatabaseSeeder extends Seeder
             'jurusan_id' => 5,
         ]);
 
-        mahasiswa::create([
+        Mahasiswa::create([
             'nim' => '3622583187',
             'nama_mahasiswa' => 'Rizki Firmansyah',
             'foto_mahasiswa' => 'Mahasiswa\mahasiswa1.jpg',
@@ -268,7 +268,7 @@ class DatabaseSeeder extends Seeder
             'prodi_id' => 2
         ]);
 
-        mahasiswa::create([
+        Mahasiswa::create([
             'nim' => '3622583198',
             'nama_mahasiswa' => 'Ilham Malana',
             'foto_mahasiswa' => 'Mahasiswa\mahasiswa2.jpg',
@@ -276,7 +276,7 @@ class DatabaseSeeder extends Seeder
             'prodi_id' => 5,
         ]);
 
-        mahasiswa::create([
+        Mahasiswa::create([
             'nim' => '3622583244',
             'nama_mahasiswa' => 'Andika Subiantoro',
             'foto_mahasiswa' => 'Mahasiswa\mahasiswa3.jpg',
