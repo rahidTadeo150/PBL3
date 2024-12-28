@@ -175,7 +175,7 @@ class WebsitePanel extends Controller
             'FotoPrestasi' => ['required', 'image', 'mimes:jpeg,jpg,png', 'file', 'max:5120'],
         ]);
 
-        $ValidateData['FotoPrestasi'] = $request->file('FotoPrestasi')->store('/RequestPrestasi');
+        $ValidateData['FotoPrestasi'] = $request->file('FotoPrestasi')->store('/RequestPrestasi', 'public');
 
         $CreatePrestasi = RequestPrestasi::create([
             'mahasiswa_id' => $ValidateData['IdMahasiswa'],

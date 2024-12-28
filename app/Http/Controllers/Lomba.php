@@ -13,17 +13,18 @@ use Illuminate\Support\Facades\Storage;
 
 class Lomba extends Controller
 {
-    public function directToIndexLomba(Request $request) {
+    public function directToIndexLomba(Request $request)
+    {
         $TotalDatas = dbLomba::all()->count();
         $DataLomba = dbLomba::with('Instansi')->orderBy('created_at', 'desc')->get();
         if ($request->Filter == 'Nama Perlombaan') {
-            $DataLomba = dbLomba::where('nama_perlombaan', 'like', '%'.$request->search.'%')->orderBy('created_at', 'desc')->get();
+            $DataLomba = dbLomba::where('nama_perlombaan', 'like', '%' . $request->search . '%')->orderBy('created_at', 'desc')->get();
         } else if ($request->Filter == 'Instansi Perlombaan') {
             $DataLomba = dbLomba::whereHas('instansi', function ($query) use ($request) {
                 $query->where('nama_instansi', 'like', '%' . $request->search . '%');
             })->orderBy('created_at', 'desc')->get();
         } else if ($request->Filter == 'Link Perlombaan') {
-            $DataLomba = dbLomba::where('link_pendaftaran', 'like', '%'.$request->search.'%')->orderBy('created_at', 'desc')->get();
+            $DataLomba = dbLomba::where('link_pendaftaran', 'like', '%' . $request->search . '%')->orderBy('created_at', 'desc')->get();
         }
 
         return view('admin.Lomba.IndexData', [
@@ -32,7 +33,8 @@ class Lomba extends Controller
         ]);
     }
 
-    public function directToIndexHistoryLomba() {
+    public function directToIndexHistoryLomba()
+    {
         $DataLomba = dbLomba::onlyTrashed()->get()->load('Instansi');
         $TotalDatas = dbLomba::onlyTrashed()->count();
         return view('admin.Lomba.IndexHistoryData', [
@@ -41,16 +43,18 @@ class Lomba extends Controller
         ]);
     }
 
-    public function directToCreateLomba(Request $request) {
+    public function directToCreateLomba(Request $request)
+    {
         $DataInstansi = Instansi::find($request->IdInstansi);
         $Tingkatan = Tingkatan::all();
-        return view('admin.Lomba.CreateData',[
+        return view('admin.Lomba.CreateData', [
             'DataInstansi' => $DataInstansi,
             'Tingkatan' => $Tingkatan,
         ]);
     }
 
-    public function StoreDataLomba(Request $request) {
+    public function StoreDataLomba(Request $request)
+    {
         $ValidateData = $request->validate([
             'IdInstansi' => ['required'],
             'NamaPerlombaan' => ['required', 'max:100', 'min:5'],
@@ -59,10 +63,10 @@ class Lomba extends Controller
             'TanggalPenutupan' => ['required'],
             'Tingkatan' => ['required'],
             'Persyaratan' => ['required', 'min:10'],
-            'FotoLomba' => ['required', 'image', 'mimes:jpeg,jpg,png','file', 'max:5120'],
+            'FotoLomba' => ['required', 'image', 'mimes:jpeg,jpg,png', 'file', 'max:5120'],
         ]);
         $ValidateData['Administrator'] = auth('Admin')->user()->id;
-        $ValidateData['FotoLomba']=$request->file('FotoLomba')->store('\Lomba');
+        $ValidateData['FotoLomba'] = $request->file('FotoLomba')->store('\Lomba', 'public');
         dbLomba::create([
             'nama_perlombaan' => $ValidateData['NamaPerlombaan'],
             'instansi_id' => $ValidateData['IdInstansi'],
@@ -81,7 +85,8 @@ class Lomba extends Controller
         return redirect(route('Lomba.Index'))->with('InstansiSuccessAdded', 'Data Instansi Telah Berhasil Di Tambahkan');
     }
 
-    public function directToDetailLomba(Request $request) {
+    public function directToDetailLomba(Request $request)
+    {
         $LombaRelation = ['Tingkatan', 'Instansi', 'Status', 'Admin'];
 
         $DataLomba = dbLomba::find($request->id);
@@ -92,7 +97,8 @@ class Lomba extends Controller
         ]);
     }
 
-    public function EditLomba(Request $request) {
+    public function EditLomba(Request $request)
+    {
         $LombaRelation = ['Tingkatan', 'Instansi', 'Status', 'Admin'];
 
         $DataLomba = dbLomba::find($request->IdObject)->load($LombaRelation);
@@ -102,7 +108,7 @@ class Lomba extends Controller
         $PendaftaranParshed = Carbon::createFromFormat('d-m-Y', $DataLomba->tanggal_pendaftaran)->format('Y-m-d');
         $PenutupanParshed = Carbon::createFromFormat('d-m-Y', $DataLomba->tanggal_penutupan)->format('Y-m-d');
 
-        return view('admin.Lomba.EditData',[
+        return view('admin.Lomba.EditData', [
             'DataLomba' => $DataLomba,
             'TanggalPendaftaran' => $PendaftaranParshed,
             'TanggalPenutupan' => $PenutupanParshed,
@@ -111,7 +117,8 @@ class Lomba extends Controller
         ]);
     }
 
-    public function UpdateLomba(Request $request) {
+    public function UpdateLomba(Request $request)
+    {
 
         $ValidateData = $request->validate([
             'IdInstansi' => ['required'],
@@ -121,7 +128,7 @@ class Lomba extends Controller
             'TanggalPenutupan' => ['required'],
             'Tingkatan' => ['required'],
             'Persyaratan' => ['required', 'min:10', 'max:255'],
-            'FotoLomba' => ['nullable', 'image', 'mimes:jpeg,jpg,png','file', 'max:5120'],
+            'FotoLomba' => ['nullable', 'image', 'mimes:jpeg,jpg,png', 'file', 'max:5120'],
         ]);
         $ValidateData['Administrator'] = auth('Admin')->user()->id;
         $DataPicker = dbLomba::find($request->IdLomba);
@@ -136,8 +143,8 @@ class Lomba extends Controller
             'status_id' => 1,
             'admin_id' => $ValidateData['Administrator'],
         ]);
-        if($request->has('FotoLomba')){
-            $ValidateData['FotoLomba']=$request->file('FotoLomba')->store('\Lomba');
+        if ($request->has('FotoLomba')) {
+            $ValidateData['FotoLomba'] = $request->file('FotoLomba')->store('\Lomba', 'public');
             $DataPicker->update([
                 'foto_lomba' => $ValidateData['FotoLomba'],
             ]);
@@ -146,7 +153,8 @@ class Lomba extends Controller
         return redirect(route('Lomba.Detail', ['id' => $DataPicker]));
     }
 
-    public function DeleteLomba(Request $request) {
+    public function DeleteLomba(Request $request)
+    {
         $DataPicker = dbLomba::find($request->IdLomba);
 
         $DataPicker->update([
@@ -159,7 +167,8 @@ class Lomba extends Controller
         return redirect(route('Lomba.Index'));
     }
 
-    public function RestoreLomba(Request $request) {
+    public function RestoreLomba(Request $request)
+    {
         $DataPicker = dbLomba::withTrashed()->find($request->IdLomba);
 
         $DataPicker->restore();

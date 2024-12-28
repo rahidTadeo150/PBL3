@@ -91,7 +91,7 @@ class PrestasiMahasiswa extends Controller
         ]);
 
         $ValidateData['Administrator'] = auth('Admin')->user()->id;
-        $ValidateData['FotoPrestasi'] = $request->file('FotoPrestasi')->store('/Prestasi');
+        $ValidateData['FotoPrestasi'] = $request->file('FotoPrestasi')->store('/Prestasi', 'public');
 
         $CreatePrestasi = Prestasi::firstOrCreate([
             'nama_perlombaan' => ucwords(strtolower($ValidateData['NamaPerlombaan'])),
@@ -185,7 +185,7 @@ class PrestasiMahasiswa extends Controller
 
         if ($request->has('FotoPrestasi')) {
             Storage::delete($PrestasiPicker->foto_bukti_prestasi);
-            $ValidateData['FotoPrestasi'] = $request->file('FotoPrestasi')->store('/Prestasi');
+            $ValidateData['FotoPrestasi'] = $request->file('FotoPrestasi')->store('/Prestasi', 'public');
             $PrestasiPicker->update([
                 'foto_bukti_prestasi' => $ValidateData['FotoPrestasi'],
             ]);
