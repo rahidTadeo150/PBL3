@@ -45,7 +45,7 @@
                             <i class="w-4 h-4" data-feather="search"></i>
                             <form action="" class="flex-grow ">
                                 <input class="w-full text-sm placeholder:italic focus:outline-none" name="search"
-                                    type="search" placeholder="Cari Beasiswa Anda Disini..." autocomplete="off">
+                                    type="search" placeholder="Cari Lomba Anda Disini..." autocomplete="off">
                                 <input id="FilterRequest" value="Nama Beasiswa" name="Filter" type="hidden">
                             </form>
                             <div class="h-full w-0.5 bg-gray-300 rounded-full"></div>
