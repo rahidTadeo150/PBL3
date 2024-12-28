@@ -37,6 +37,11 @@
                         </a>
                     </div>
                     <div class="flex flex-col gap-y-5">
+                        @if ($Datas->isEmpty())
+                            <div class="flex flex-col items-center justify-center w-full h-72">
+                                <p>Data Tidak Tersedia [404]</p>
+                            </div>
+                        @else
                         @foreach ($Datas as $Data)
                             <div
                                 class="w-full h-[183px] rounded bg-white border border-gray-200 shadow-lg hover:scale-105 duration-200 ease-in cursor-pointer">
@@ -76,6 +81,7 @@
                                 </div>
                             </div>
                         @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
