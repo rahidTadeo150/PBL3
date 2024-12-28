@@ -101,7 +101,7 @@
             </div>
             <div class="flex flex-col w-full mt-10 lg:mt-0 md:flex-row lg:flex-col gap-x-4 gap-y-12 lg:w-1/4">
                 <div class="p-4 border-2 border-gray-200 rounded-lg shadow-lg grow h-fit">
-                    <p class="text-lg font-semibold ">List Instansi Beasiswa</p>
+                    <p class="text-lg font-semibold ">List Instansi Lomba</p>
                     <div class="flex flex-col mt-2 gap-y-2">
                         @foreach ($BestInstansi as $Data)
                             <div class="flex flex-row items-center px-3 py-2 gap-x-3 hover:bg-gray-200">
