@@ -14,7 +14,7 @@
         <p class="text-[28px] font-bold mb-[14px]">{{ $Data->nama_lomba }}</p>
         <div class="flex flex-row gap-x-[15px] items-center mb-[20px]">
             <div class="w-[45px] h-[45px] rounded-full overflow-hidden">
-                <img src="storage{{ $Data->Instansi->foto_profile }}">
+                <img src="storage/{{ $Data->Instansi->foto_profile }}">
             </div>
             <div class="text-[12px]">
                 <p class="font-medium">{{ $Data->Instansi->nama_instansi }}</p>
