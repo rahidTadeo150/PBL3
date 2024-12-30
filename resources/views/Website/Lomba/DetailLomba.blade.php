@@ -11,7 +11,7 @@
         <div class="w-fit text-[13px] text-white font-medium py-[2px] px-[25px] bg-[#2F39FF] rounded-full mb-[10px]">
             <p>{{ $Data->Tingkatan->tingkatan }}</p>
         </div>
-        <p class="text-[28px] font-bold mb-[14px]">{{ $Data->nama_beasiswa }}</p>
+        <p class="text-[28px] font-bold mb-[14px]">{{ $Data->nama_lomba }}</p>
         <div class="flex flex-row gap-x-[15px] items-center mb-[20px]">
             <div class="w-[45px] h-[45px] rounded-full overflow-hidden">
                 <img src="storage{{ $Data->Instansi->foto_profile }}">
@@ -33,7 +33,7 @@
                 <p>Pendaftaran Ditutup</p>
             </div>
             <div class="flex flex-col gap-y-1 text-[12px]">
-                <p>: Beasiswa ({{ $Data->Tingkatan->tingkatan }})</p>
+                <p>: Lomba ({{ $Data->Tingkatan->tingkatan }})</p>
                 <p>: {{ $Data->Instansi->nama_instansi }}</p>
                 <p>: {{ $Data->Instansi->email }}</p>
                 <p>: {{ $Data->tanggal_pendaftaran }}</p>
@@ -43,7 +43,7 @@
         <div>
             <div class="flex flex-row items-center gap-x-2 mb-[11px]">
                 <i class="w-[16px] h-[16px] text-[#0022FF]" data-feather="link"></i>
-                <p class="text-[13px] font-semibold">Link Register Beasiswa</p>
+                <p class="text-[13px] font-semibold">Link Register Lomba</p>
             </div>
             <div class="flex flex-row items-center gap-x-[14px]">
                 <div class="w-[449px] py-[6px] pl-[16px] rounded-[3px] bg-[#EAEAEA]">

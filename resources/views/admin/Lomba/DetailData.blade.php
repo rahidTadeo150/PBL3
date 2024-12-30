@@ -29,19 +29,19 @@
                 <p class="text-sm font-semibold"><span class="mr-2"><i class="fa-regular fa-calendar"></i></span>{{ $Data->tanggal_penutupan }}</p>
             </div>
             <div class="mt-6">
-                <p class="text-sm font-medium">Tingkatan Beasiswa</p>
+                <p class="text-sm font-medium">Tingkatan Lomba</p>
                 <p class="text-sm font-semibold"><span class="mr-2"><i class="fa-solid fa-earth-americas"></i></span>{{ $Data->Tingkatan->tingkatan }}</p>
             </div>
         </div>
         <div class="w-[650px] bg-white shadow-lg border border-gray-300 border-l-4 border-l-[#315BC9] rounded-md p-6">
             <div class="">
-                <p class="mb-2 text-base font-semibold">Persyaratan Beasiswa</p>
+                <p class="mb-2 text-base font-semibold">Persyaratan Lomba</p>
                 <div class="w-full h-[100px] py-2 px-3 bg-gray-200 rounded-md overflow-y-scroll">
                     <p class="text-sm font-normal">{{ $Data->persyaratan }}</p>
                 </div>
             </div>
             <div class="mt-4">
-                <p class="mb-2 text-base font-semibold">Link Pendaftaran Beasiswa</p>
+                <p class="mb-2 text-base font-semibold">Link Pendaftaran Lomba</p>
                 <div class="w-full px-3 py-2 bg-gray-200 rounded-md">
                     <a href="{{ $Data->link_pendaftaran }}" target="_blank" rel="noopener noreferrer">
                         <p class="text-sm font-normal text-blue-600 hover:underline"><span class="mr-2 text-black"><i class="fa-solid fa-link"></i></span>{{ $Data->link_pendaftaran }}</p>
