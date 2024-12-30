@@ -229,7 +229,7 @@ class PrestasiMahasiswa extends Controller
 
         //Finding By Created At
         $Data = MahasiswaPrestasi::with('Mahasiswa')->whereBetween('created_at', [$StartDate, $EndDate])->get();
-        $pdf = Pdf::loadView('\TemplatePDF\viewpdfmahasiswa', ['data' => $Data]);
+        $pdf = Pdf::loadView('TemplatePDF.viewpdfmahasiswa', ['data' => $Data]);
         return $pdf->stream('Data Lampiran Mahasiswa.pdf');
     }
 }
