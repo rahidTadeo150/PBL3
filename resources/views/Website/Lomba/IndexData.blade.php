@@ -46,7 +46,7 @@
                             <form action="" class="flex-grow ">
                                 <input class="w-full text-sm placeholder:italic focus:outline-none" name="search"
                                     type="search" placeholder="Cari Lomba Anda Disini..." autocomplete="off">
-                                <input id="FilterRequest" value="Nama Beasiswa" name="Filter" type="hidden">
+                                <input id="FilterRequest" value="Nama Perlombaan" name="Filter" type="hidden">
                             </form>
                             <div class="h-full w-0.5 bg-gray-300 rounded-full"></div>
                             <button id="ButtonFilter" onclick="ShowDropdown()"
@@ -57,12 +57,12 @@
                                 class="absolute hidden w-48 p-2 mt-2 bg-white border-2 border-gray-200 rounded-md shadow-xl gap-y-2 z-41 top-full -right-1">
                                 <div
                                     class="flex flex-col items-center justify-center w-full py-1 cursor-pointer group hover:bg-gray-200">
-                                    <p id="FilterOption" class="text-sm group-hover:text-blue-600">Nama Beasiswa</p>
+                                    <p id="FilterOption" class="text-sm group-hover:text-blue-600">Nama Perlombaan</p>
                                 </div>
-                                <div
+                                {{-- <div
                                     class="flex flex-col items-center justify-center w-full py-1 cursor-pointer group hover:bg-gray-200">
                                     <p id="FilterOption" class="text-sm group-hover:text-blue-600">Nama Instansi</p>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                                     style="background-image: url('storage{{ $Data->foto_lomba }}'); background-size: cover; background-repeat: no-repeat; background-position: center;">
                                     <div
                                         class="absolute z-40 px-4 py-1 bg-blue-600 rounded-full group-hover:hidden top-3 right-4">
-                                        <p class="text-xs font-medium text-white">Internasional</p>
+                                        <p class="text-xs font-medium text-white">{{ $Data->Tingkatan->tingkatan }}</p>
                                     </div>
                                     <div
                                         class="absolute z-30 flex-col items-center justify-center hidden w-full h-full p-5 group-hover:flex">

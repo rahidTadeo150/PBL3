@@ -170,10 +170,10 @@
                                     class="flex flex-col items-center justify-center w-full py-1 cursor-pointer group hover:bg-gray-200">
                                     <p id="FilterOption" class="text-sm group-hover:text-blue-600">Nama Beasiswa</p>
                                 </div>
-                                <div
+                                {{-- <div
                                     class="flex flex-col items-center justify-center w-full py-1 cursor-pointer group hover:bg-gray-200">
                                     <p id="FilterOption" class="text-sm group-hover:text-blue-600">Nama Instansi</p>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -187,7 +187,7 @@
                                     style="background-image: url('storage{{ $Data->foto_beasiswa }}'); background-size: cover; background-repeat: no-repeat; background-position: center;">
                                     <div
                                         class="absolute z-40 px-4 py-1 bg-blue-600 rounded-full group-hover:hidden top-3 right-4">
-                                        <p class="text-xs font-medium text-white">Internasional</p>
+                                        <p class="text-xs font-medium text-white">{{ $Data->Tingkatan->tingkatan }}</p>
                                     </div>
                                     <div
                                         class="absolute z-30 flex-col items-center justify-center hidden w-full h-full p-5 group-hover:flex">

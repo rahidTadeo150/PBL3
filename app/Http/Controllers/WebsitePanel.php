@@ -18,7 +18,8 @@ class WebsitePanel extends Controller
 {
     public function ShowListBeasiswa(Request $request)
     {
-        $Relation = ['Instansi'];
+        $Relation = ['Instansi','Tingkatan'];
+        $Beasiswa = Beasiswa::with($Relation)->find($request->id);
         $Highlight = Beasiswa::latest()->take(5)->get();
 
         if ($request->ListBy == 'Lokal') {
@@ -71,7 +72,8 @@ class WebsitePanel extends Controller
 
     public function ShowListLomba(Request $request)
     {
-        $Relation = ['Instansi'];
+        $Relation = ['Instansi','Tingkatan'];
+        $Lomba = Lomba::with($Relation)->find($request->id);
         $Highlight = Lomba::latest()->take(5)->get();
 
         if ($request->ListBy == 'Lokal') {
@@ -175,7 +177,7 @@ class WebsitePanel extends Controller
             'FotoPrestasi' => ['required', 'image', 'mimes:jpeg,jpg,png', 'file', 'max:5120'],
         ]);
 
-        $ValidateData['FotoPrestasi'] = $request->file('FotoPrestasi')->store('/RequestPrestasi', 'public');
+        $ValidateData['FotoPrestasi'] = $request->file('FotoPrestasi')->store('/Prestasi', 'public');
 
         $CreatePrestasi = RequestPrestasi::create([
             'mahasiswa_id' => $ValidateData['IdMahasiswa'],
