@@ -66,7 +66,7 @@ class Instansi extends Controller
         $ValidateData = $request->validate([
             'NamaInstansi' => ['required', 'max:62', 'min:3'],
             'NoTelephone' => ['required', 'max:13', 'min:11', 'regex:/^[0-9]+$/'],
-            'Alamat' => ['required', 'max:100', 'min:20'],
+            'Alamat' => ['required', 'max:100', 'min:10'],
             'Email' => ['required', 'max:62', 'min:5', 'email:rfc,dns'],
             'FotoInstansi' => ['nullable', 'image', 'mimes:jpeg,jpg,png', 'file', 'max:5120'],
         ]);
@@ -119,7 +119,7 @@ class Instansi extends Controller
         $ValidateData = $request->validate([
             'NamaInstansi' => ['required', 'max:62', 'min:3'],
             'NoTelephone' => ['required', 'max:13', 'min:11', 'regex:/^[0-9]+$/'],
-            'Alamat' => ['required', 'max:100', 'min:20'],
+            'Alamat' => ['required', 'max:100', 'min:10'],
             'Email' => ['required', 'max:62', 'min:5', 'email:rfc,dns'],
             'FotoInstansi' => ['nullable', 'image', 'mimes:jpeg,jpg,png', 'file', 'max:5120'],
         ]);

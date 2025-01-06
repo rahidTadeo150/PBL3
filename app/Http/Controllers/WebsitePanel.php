@@ -46,7 +46,6 @@ class WebsitePanel extends Controller
 
         $Highlight->load($Relation);
         $Beasiswa->load($Relation);
-        // Ubah format foto_beasiswa untuk setiap item dalam koleksi
         foreach ($Beasiswa as $data) {
             $data->foto_beasiswa = str_replace('\\', '/', $data->foto_beasiswa);
         }
@@ -101,7 +100,6 @@ class WebsitePanel extends Controller
         $Highlight->load($Relation);
         $Lomba->load($Relation);
 
-        // Ubah format foto_beasiswa untuk setiap item dalam koleksi
         foreach ($Lomba as $data) {
             $data->foto_lomba = str_replace('\\', '/', $data->foto_lomba);
         }
@@ -148,7 +146,10 @@ class WebsitePanel extends Controller
                 $query->where('category_prestasi_id', 1);
             })->orderBy('created_at', 'desc')->get();
         }
-
+       
+        foreach ($DataPrestasi as $data) {
+            $data->foto_lomba = str_replace('\\', '/', $data->foto_lomba);
+        }
         return view('Website.Prestasi.IndexData', [
             'Datas' => $DataPrestasi,
             'BestMahasiswa' => $BestMahasiswa
