@@ -80,7 +80,7 @@ class AdminPanel extends Controller
         $sourcePath = $DataRequest->foto_bukti_prestasi;
         $destinationPath = 'app/public/Prestasi/' . basename($sourcePath);
         Storage::disk('public')->put($destinationPath, file_get_contents(storage_path('app/public/'.$sourcePath)));
-        Storage::delete($DataRequest->foto_bukti_prestasi);
+        //Storage::delete($DataRequest->foto_bukti_prestasi);
 
         $Administrator = auth('Admin')->user()->id;
 

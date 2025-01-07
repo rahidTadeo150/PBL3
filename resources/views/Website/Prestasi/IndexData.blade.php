@@ -55,11 +55,11 @@
                                         <p class="text-xs font-medium text-[#3C3C3C] mb-2">
                                             {{ $Data->Prestasi->nama_perlombaan }} (Internasional)
                                         </p>
-                                        <p class="mb-4 text-xs italic">“Kampus Poliwangi Telah Meraih total 1 juara
-                                            dalam perlombaan Lomba Silat Se-Jawa Timur tingkat
+                                        <p class="mb-4 text-xs italic">“Kampus Poliwangi Telah Meraih {{ $Data->posisi_juara}}
+                                            dalam perlombaan {{ $Data->Prestasi->nama_perlombaan }} tingkat
                                             {{ $Data->Prestasi->Tingkatan->tingkatan }} pada tanggal
                                             {{ $Data->Prestasi->tanggal_perlombaan }}”</p>
-                                        <p class="text-xs font-medium text-[#424242]">Diposting pada 15-03-2024 24:00:13
+                                        <p class="text-xs font-medium text-[#424242]">Diposting pada  {{ $Data->Prestasi->created_at }}
                                         </p>
                                     </div>
                                 </div>

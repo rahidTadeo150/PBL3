@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <p class="text-[30px] font-bold mt-[15px] leading-8">{{ $DataRequest->nama_perlombaan }}</p>
-                <p class="text-[14px] font-medium">Bank BCA Jember</p>
+               <p class="text-[14px] font-medium">{{ $DataRequest->Mahasiswa->nama_mahasiswa }}</p>
                 <div class="flex flex-row items-center mt-[20px] gap-x-2 mb-[30px]">
                     <img class="w-[25px] h-[25px]" src="\webdevelp\icons\IconDescRequest.png">
                     <p class="text-[15px] font-semibold tracking-tight">Detail Prestasi Mahasiswa</p>
@@ -29,6 +29,7 @@
                         <p>Nama Perlombaan</p>
                         <p>Kedudukan Posisi Juara</p>
                         <p>Category Lomba</p>
+                        <p>Tanggal Perlombaan</p>
                         <p>Tingkatan Perlombaan</p>
                         <p>Tanggal Di Kirim</p>
                     </div>
@@ -36,6 +37,7 @@
                         <p>: {{ $DataRequest->nama_perlombaan }}</p>
                         <p>: {{ $DataRequest->posisi_juara }}</p>
                         <p>: {{ $DataRequest->Category->category }}</p>
+                        <p>: {{ $DataRequest->tanggal_perlombaan }}</p>
                         <p>: {{ $DataRequest->Tingkatan->tingkatan }}</p>
                         <p>: {{ $DataRequest->created_at }}</p>
                     </div>
